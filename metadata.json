@@ -1,0 +1,6 @@
+{
+  "name": "PleasureHub",
+  "description": "Premium 18+ Adult Products eCommerce Store. A safe, secure, and discreet shopping experience.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
