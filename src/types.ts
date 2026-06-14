@@ -1,13 +1,13 @@
 export type CategoryId =
   | 'all'
-  | 'toys'
-  | 'couples'
-  | 'massagers'
-  | 'lubricants'
-  | 'lingerie'
   | 'men'
   | 'women'
-  | 'accessories';
+  | 'accessories'
+  | 'footwear'
+  | 'outerwear'
+  | 'activewear'
+  | 'bags'
+  | 'ethnic';
 
 export interface Product {
   id: string;

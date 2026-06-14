@@ -1,8 +1,8 @@
 import React from 'react';
 import { Star, ShieldCheck, Heart, ShoppingCart, ArrowLeft, Send, Check } from 'lucide-react';
-import { Product, Review } from '../types';
-import { ProductIllustration } from './ProductIllustration';
-import { CurrencyConfig, formatPriceWithCurrency } from '../utils/currency';
+import { Product, Review } from '../../types';
+import { ProductIllustration } from '../common/ProductIllustration';
+import { CurrencyConfig, formatPriceWithCurrency } from '../../utils/currency';
 
 interface ProductDetailViewProps {
   product: Product;
@@ -355,11 +355,9 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               ))
             )}
           </div>
-        </div>
-
-        {/* Right Side: Add a Review form */}
-        <div className="lg:col-span-5 bg-[#140F28]/35 border border-violet-950/60 rounded-2xl p-6 md:p-8 space-y-4 h-fit">
-          <h3 className="text-sm font-serif font-black tracking-widest text-violet-400 uppercase">Write a Critique</h3>
+        </div>        {/* Right Side: Add a Review form */}
+        <div className="lg:col-span-5 bg-[#111]/35 border border-zinc-800 rounded-2xl p-6 md:p-8 space-y-4 h-fit">
+          <h3 className="text-sm font-serif font-black tracking-widest text-amber-500 uppercase">Write a Critique</h3>
           
           {reviewSubmitted ? (
             <div id="review-complete-badge" className="bg-emerald-950/20 border border-emerald-500/30 p-6 rounded-xl text-center space-y-2">
@@ -377,7 +375,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                   placeholder="e.g. Secret Intimate / Anonymous L."
                   value={reviewerName}
                   onChange={e => setReviewerName(e.target.value)}
-                  className="w-full bg-[#0E091D] text-xs px-4 py-3 rounded-xl border border-violet-950 focus:border-violet-500/80 focus:outline-none"
+                  className="w-full bg-[#0c0c0e] text-xs px-4 py-3 rounded-xl border border-zinc-800 focus:border-amber-500 focus:outline-none"
                 />
               </div>
 
@@ -405,13 +403,13 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                   placeholder="Share details regarding motors, tactile feel, sound levels, and discrete shipping..."
                   value={reviewerComment}
                   onChange={e => setReviewerComment(e.target.value)}
-                  className="w-full bg-[#0E091D] text-xs px-4 py-3 rounded-xl border border-violet-950 focus:border-violet-500/80 focus:outline-none resize-none font-sans leading-relaxed"
+                  className="w-full bg-[#0c0c0e] text-xs px-4 py-3 rounded-xl border border-zinc-800 focus:border-amber-500 focus:outline-none resize-none font-sans leading-relaxed"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full cursor-pointer py-3.5 bg-gradient-to-r from-violet-600 to-fuchsia-500 hover:from-violet-500 hover:to-fuchsia-400 font-mono text-xs uppercase font-bold tracking-widest text-white rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5"
+                className="w-full cursor-pointer py-3.5 bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 font-mono text-xs uppercase font-semibold text-black rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5"
               >
                 <Send className="w-3.5 h-3.5" /> Post Critique
               </button>
@@ -422,7 +420,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
 
       {/* RELATED PRODUCTS */}
       {relatedProducts.length > 0 && (
-        <section id="detail-related-carousel" className="space-y-8 pt-12 border-t border-violet-950/30">
+        <section id="detail-related-carousel" className="space-y-8 pt-12 border-t border-zinc-900">
           <h3 className="text-xl font-serif font-black text-white text-center sm:text-left">Related Intimacies</h3>
           
           <div id="relative-grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -436,7 +434,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                   setActiveImageIdx(0);
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="group bg-[#120F24]/30 border border-violet-950/40 rounded-2xl p-4 flex flex-col justify-between hover:border-violet-650 transition-all cursor-pointer hover:shadow-violet-900/10"
+                className="group bg-zinc-900/20 border border-zinc-800 rounded-2xl p-4 flex flex-col justify-between hover:border-amber-500 transition-all cursor-pointer"
               >
                 <div className="aspect-square w-full rounded-xl bg-[#090614]/85 flex items-center justify-center relative overflow-hidden mb-3">
                   <div className="w-32 h-32">
@@ -444,7 +442,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                   </div>
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-xs font-serif font-bold text-zinc-200 group-hover:text-fuchsia-300 transition-colors uppercase tracking-wide truncate">
+                  <h4 className="text-xs font-serif font-bold text-zinc-200 group-hover:text-amber-500 transition-colors uppercase tracking-wide truncate">
                     {p.name}
                   </h4>
                   <p className="text-[10px] text-zinc-500 font-mono font-bold uppercase">{p.brand}</p>

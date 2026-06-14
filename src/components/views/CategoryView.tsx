@@ -1,8 +1,8 @@
 import React from 'react';
 import { Filter, Star, ShieldCheck, Heart, SlidersHorizontal, ChevronDown } from 'lucide-react';
-import { Product, CategoryId } from '../types';
-import { ProductIllustration } from './ProductIllustration';
-import { CurrencyConfig, formatPriceWithCurrency } from '../utils/currency';
+import { Product, CategoryId } from '../../types';
+import { ProductIllustration } from '../common/ProductIllustration';
+import { CurrencyConfig, formatPriceWithCurrency } from '../../utils/currency';
 
 interface CategoryViewProps {
   products: Product[];
@@ -42,39 +42,39 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
   const CATEGORY_META: { [key in CategoryId]: { title: string; desc: string } } = {
     all: {
       title: 'The Full Spectrum',
-      desc: 'Explore our complete sanctuary of premium biological devices, sheer lace wear, and botanical formulas, meticulously curated for refined adults.'
-    },
-    toys: {
-      title: 'Adult Toys',
-      desc: 'Discover a curated sanctuary of intimate wellness. Our collection blends cutting-edge technology with sophisticated design for unparalleled sensory experiences.'
-    },
-    couples: {
-      title: 'Couples Products',
-      desc: 'Synchronized dual simulators, ergonomic shared shapes, and coordinate bundles crafted to deepen connection and unify visual sensory states.'
-    },
-    massagers: {
-      title: 'Personal Massagers',
-      desc: 'Wands and pebbles coated with organic satin silicone, powered by whisper-quiet high frequency motors for target relief and localized sensory release.'
-    },
-    lubricants: {
-      title: 'Lubricants & Oils',
-      desc: 'Botanical formulations, body-safe melting massage oils, and pH-balanced intimate fluids that dry completely clear with zero non-sticky residue.'
-    },
-    lingerie: {
-      title: 'Intimate Apparel',
-      desc: 'Intricately structured French lace bodysuits, sheer mesh wear, and heavy mulberry silk straps designed to outline and celebrate anatomical elegance.'
+      desc: 'Explore our complete collection of premium runway outerwear, tailored suits, hand-painted footwear, and luxury fashion accessories.'
     },
     men: {
-      title: "Men's Cabinet",
-      desc: 'Precision engineered physical stimulators and daily performance formulations targeted directly at men’s aesthetic pleasure and toning.'
+      title: "Men's Sartorial",
+      desc: 'Super 120s wool suits, French-cuffed dress shirts, half-canvassed double breasted blazers, and luxury cotton casual shirts.'
     },
     women: {
-      title: "Women's Collection",
-      desc: 'Advanced biomechanic pulse units, clitoral sonic transducers, and pelvic floor toning arrays engineered entirely by women, for women.'
+      title: "Women's Couture",
+      desc: 'Athenian silk midi dresses, structured hourglass blazers, cowl neck bias gowns, and fine Italian leather shoulder bags.'
+    },
+    ethnic: {
+      title: 'Ethnic & Heritage',
+      desc: 'Classic handcrafted chikankari Kurtis, embroidered dupattas, festive kurtas, and traditional motifs reimagined for modern wardrobes.'
+    },
+    footwear: {
+      title: 'Designer Footwear',
+      desc: 'Blake-stitched burnished leather Oxfords, Saffiano leather loafers, handcrafted suede chelsea boots, and cushioned insoles.'
     },
     accessories: {
-      title: 'Accessories & Care',
-      desc: 'USB quick chargers, travel storage pods, dynamic sanitizers, and accessory kits designed to preserve high fidelity wellness equipment.'
+      title: 'Bespoke Accessories',
+      desc: 'Double-bridge gold aviator glasses, polarized designer frames, leather watch rolls, and premium travel accessories.'
+    },
+    outerwear: {
+      title: 'Tailored Outerwear',
+      desc: 'Premium trench coats, windbreakers, wool coats, and heavy-duty jackets styled for climate distinction.'
+    },
+    activewear: {
+      title: 'Performance Wear',
+      desc: 'High-stretch joggers, heat-venting compression tees, and premium active ensembles engineered for movement.'
+    },
+    bags: {
+      title: 'Luxury Bags',
+      desc: 'Bespoke Saffiano leather totes, daily utility satchels, and secure travel bags structured for class.'
     }
   };
 
@@ -159,11 +159,11 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
   };
 
   const relativeCollections = [
-    { label: 'Intimate Apparel', cat: 'lingerie' },
-    { label: 'Massage Oils & Balms', cat: 'lubricants' },
-    { label: 'Bedroom Tech', cat: 'toys' },
-    { label: 'Couples Bundles', cat: 'couples' },
-    { label: 'Eco-Friendly Range', cat: 'toys' }
+    { label: "Men's Sartorial", cat: 'men' },
+    { label: "Women's Couture", cat: 'women' },
+    { label: 'Designer Footwear', cat: 'footwear' },
+    { label: 'Ethnic & Heritage', cat: 'ethnic' },
+    { label: 'Bespoke Accessories', cat: 'accessories' }
   ];
 
   return (
@@ -184,7 +184,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
 
       {/* 2. DYNAMIC RICH CATEGORY TITLE AND BRIEF */}
       <div id="category-intro-section" className="mb-10 max-w-4xl space-y-4">
-        <h1 className="text-4xl md:text-5.5xl font-serif font-black tracking-tight leading-tight bg-gradient-to-r from-white via-violet-100 to-zinc-200 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-5.5xl font-serif font-black tracking-tight leading-tight bg-gradient-to-r from-white via-zinc-150 to-zinc-200 bg-clip-text text-transparent">
           {CATEGORY_META[selectedCategory].title}
         </h1>
         <p className="text-sm md:text-base text-zinc-400 font-sans leading-relaxed">
@@ -193,17 +193,17 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
       </div>
 
       {/* 3. DENSE BARRIER LEVEL CONTROLS FOR MOBILES */}
-      <div id="inline-controls-panel" className="w-full flex items-center justify-between border-y border-violet-950/40 py-4 mb-8">
+      <div id="inline-controls-panel" className="w-full flex items-center justify-between border-y border-zinc-800 py-4 mb-8">
         <button
           id="btn-mobile-filters-trigger"
           onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
-          className="md:hidden flex items-center gap-2 px-4 py-2 border border-violet-900 rounded-full text-xs font-mono font-bold tracking-wider text-violet-300 bg-violet-950/25 cursor-pointer uppercase"
+          className="md:hidden flex items-center gap-2 px-4 py-2 border border-zinc-800 rounded-full text-xs font-mono font-bold tracking-wider text-amber-500 bg-[#111] cursor-pointer uppercase"
         >
           <SlidersHorizontal className="w-4 h-4" /> Filter & Sort
         </button>
 
-        <span id="product-results-counter" className="hidden sm:inline text-xs text-zinc-400 font-mono tracking-wider bg-violet-950/30 px-3 py-1.5 rounded border border-violet-950/50">
-          Showing <strong className="text-violet-300">{sortedProducts.length}</strong> luxurious matches
+        <span id="product-results-counter" className="hidden sm:inline text-xs text-zinc-400 font-mono tracking-wider bg-zinc-900/40 px-3 py-1.5 rounded border border-zinc-800">
+          Showing <strong className="text-amber-500">{sortedProducts.length}</strong> luxurious matches
         </span>
 
         {/* Sort selector dropdown */}
@@ -214,7 +214,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
               id="select-sort-options"
               value={sortOption}
               onChange={(e) => setSortOption(e.target.value)}
-              className="appearance-none bg-[#140F24] border border-violet-950/80 rounded-lg py-2 pl-4 pr-10 hover:border-violet-600 focus:outline-none text-zinc-300 cursor-pointer"
+              className="appearance-none bg-[#111] border border-zinc-800 rounded-lg py-2 pl-4 pr-10 hover:border-amber-500 focus:outline-none text-zinc-300 cursor-pointer"
             >
               <option value="featured">Featured / Ratings</option>
               <option value="low-to-high">Price: Low to High</option>
@@ -233,8 +233,8 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
         <aside
           id="desktop-sidebar-filters"
           className={`${
-            mobileFiltersOpen ? 'fixed inset-0 z-50 bg-[#0B0813] p-6 overflow-y-auto block' : 'hidden'
-          } md:block space-y-8 pr-4 border-r border-violet-950/20`}
+            mobileFiltersOpen ? 'fixed inset-0 z-50 bg-black p-6 overflow-y-auto block' : 'hidden'
+          } md:block space-y-8 pr-4 border-r border-zinc-900/60`}
         >
           {/* Mobile Filter Sheet Header */}
           {mobileFiltersOpen && (
@@ -251,7 +251,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
 
           {/* Section A: Price range checkbox */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-widest font-bold text-violet-400 font-mono">Price Range</h4>
+            <h4 className="text-xs uppercase tracking-widest font-bold text-amber-500 font-mono">Price Range</h4>
             <div className="space-y-3">
               {[
                 { id: 'under50', label: `Under ${formatPriceWithCurrency(50, activeCurrency)}` },
@@ -264,7 +264,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
                     type="checkbox"
                     checked={selectedPriceRanges.includes(pItem.id)}
                     onChange={() => handlePriceRangeToggle(pItem.id)}
-                    className="w-4 h-4 rounded border-violet-950 bg-[#160F2B] text-fuchsia-600 focus:ring-fuchsia-500accent-pink"
+                    className="w-4 h-4 rounded border-zinc-800 bg-[#0c0c0e] text-amber-500 focus:ring-amber-500"
                   />
                   <span>{pItem.label}</span>
                 </label>
@@ -274,13 +274,13 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
 
           {/* Section B: Brand Dropdown picker */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-widest font-bold text-violet-400 font-mono">Brand</h4>
+            <h4 className="text-xs uppercase tracking-widest font-bold text-amber-500 font-mono">Brand</h4>
             <div className="relative">
               <select
                 id="brand-filter-select"
                 value={selectedBrand}
                 onChange={e => setSelectedBrand(e.target.value)}
-                className="w-full appearance-none bg-[#140F24] border border-violet-950/80 rounded-lg py-2 pl-4 pr-10 hover:border-violet-600 focus:outline-none text-zinc-300 text-xs font-mono"
+                className="w-full appearance-none bg-[#111] border border-zinc-800 rounded-lg py-2 pl-4 pr-10 hover:border-amber-500 focus:outline-none text-zinc-300 text-xs font-mono"
               >
                 {brands.map(brand => (
                   <option key={brand} value={brand} className="uppercase">
@@ -294,7 +294,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
 
           {/* Section C: Material Selection Pills */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-widest font-bold text-violet-400 font-mono">Material Selection</h4>
+            <h4 className="text-xs uppercase tracking-widest font-bold text-amber-500 font-mono">Material Selection</h4>
             <div className="flex flex-wrap gap-2">
               {['Medical Silicone', 'ABS Polymer', 'Metallic', 'Glass'].map(mat => {
                 const isActive = selectedMaterials.includes(mat);
@@ -304,8 +304,8 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
                     onClick={() => handleMaterialToggle(mat)}
                     className={`px-3 py-1.5 rounded-full text-[10px] font-mono tracking-wider uppercase border transition-all duration-200 cursor-pointer ${
                       isActive
-                        ? 'bg-violet-900 border-violet-500 text-white shadow-lg shadow-violet-500/25'
-                        : 'border-violet-950 bg-[#160F2F]/20 text-zinc-400 hover:border-violet-850 hover:text-zinc-200'
+                        ? 'bg-amber-500 border-amber-600 text-black shadow-lg shadow-amber-500/10 font-bold'
+                        : 'border-zinc-800 bg-zinc-900/25 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200'
                     }`}
                   >
                     {mat.replace('Medical ', '')}
@@ -317,7 +317,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
 
           {/* Section D: Customer Rating Checklist */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-widest font-bold text-violet-400 font-mono">Satisfaction Rating</h4>
+            <h4 className="text-xs uppercase tracking-widest font-bold text-amber-500 font-mono">Satisfaction Rating</h4>
             <div className="space-y-2">
               {[4, 4.5, 4.8].map(st => (
                 <button
@@ -325,8 +325,8 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
                   onClick={() => setSelectedRating(selectedRating === st ? null : st)}
                   className={`w-full flex items-center justify-between text-xs px-3 py-2 rounded-lg border transition-all duration-200 text-left cursor-pointer ${
                     selectedRating === st
-                      ? 'border-fuchsia-500 bg-fuchsia-950/20 text-fuchsia-300'
-                      : 'border-violet-950/45 hover:bg-violet-950/20 text-zinc-400'
+                      ? 'border-amber-500 bg-amber-950/10 text-amber-500 font-bold'
+                      : 'border-zinc-800 hover:bg-zinc-900/30 text-zinc-400'
                   }`}
                 >
                   <div className="flex items-center gap-1.5">
@@ -351,7 +351,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
         {/* 5. DYNAMIC PRODUCT GRID SECTION */}
         <section id="category-products-panel" className="md:col-span-3 space-y-12">
           {sortedProducts.length === 0 ? (
-            <div id="no-products-fallout" className="w-full border border-dashed border-violet-950 p-16 rounded-3xl text-center space-y-4">
+            <div id="no-products-fallout" className="w-full border border-dashed border-zinc-800 p-16 rounded-3xl text-center space-y-4">
               <span className="text-3xl block">🔍</span>
               <h3 className="text-lg font-serif font-bold text-white">No intimate matches found</h3>
               <p className="text-xs text-zinc-400 max-w-md mx-auto">
@@ -359,7 +359,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
               </p>
               <button
                 onClick={resetAllFilters}
-                className="py-2.5 px-6 rounded-full bg-violet-900 hover:bg-violet-850 text-white font-mono text-xs uppercase tracking-widest transition-colors duration-200 mt-2 cursor-pointer"
+                className="py-2.5 px-6 rounded-full bg-amber-500 hover:bg-amber-600 text-black font-mono text-xs uppercase tracking-widest transition-colors duration-200 mt-2 cursor-pointer"
               >
                 Clear Sidebar Refiners
               </button>
@@ -372,17 +372,17 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
                   <div
                     key={p.id}
                     id={`catalog-card-${p.id}`}
-                    className="group relative bg-[#120F24]/40 border border-violet-950/40 rounded-2xl p-4 flex flex-col justify-between hover:border-violet-600/70 hover:shadow-[0_12px_24px_rgba(139,92,246,0.12)] transition-all duration-300"
+                    className="group relative bg-[#111]/40 border border-zinc-800/60 rounded-2xl p-4 flex flex-col justify-between hover:border-amber-500/75 hover:shadow-[0_12px_24px_rgba(245,158,11,0.06)] transition-all duration-300"
                   >
                     {/* Visual canvas */}
                     <div
                       id={`canvas-panel-${p.id}`}
                       onClick={() => handleProductClick(p)}
-                      className="aspect-square w-full rounded-xl bg-[#090614]/85 border border-violet-950/20 flex flex-col items-center justify-center relative cursor-pointer group-hover:scale-[1.01] transition-transform duration-300 overflow-hidden"
+                      className="aspect-square w-full rounded-xl bg-[#0c0c0e] border border-zinc-900/40 flex flex-col items-center justify-center relative cursor-pointer group-hover:scale-[1.01] transition-transform duration-300 overflow-hidden"
                     >
                       {/* Badge options exactly matching screenshot 1 banner style */}
                       {p.isBestSeller && (
-                        <span className="absolute top-2.5 left-2.5 bg-[#8B5CF6] text-white font-mono uppercase text-[9px] font-bold px-2.5 py-0.5 rounded tracking-widest z-10">
+                        <span className="absolute top-2.5 left-2.5 bg-amber-500 text-black font-mono uppercase text-[9px] font-bold px-2.5 py-0.5 rounded tracking-widest z-10">
                           Best Seller
                         </span>
                       )}
@@ -410,7 +410,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
                     {/* Text Details */}
                     <div className="mt-4 flex flex-col gap-1 flex-1 justify-between">
                       <div className="cursor-pointer" onClick={() => handleProductClick(p)}>
-                        <h3 className="text-sm font-serif font-bold text-zinc-100 uppercase tracking-wider group-hover:text-fuchsia-400 transition-colors truncate">
+                        <h3 className="text-sm font-serif font-bold text-zinc-100 uppercase tracking-wider group-hover:text-amber-500 transition-colors truncate">
                           {p.name}
                         </h3>
                         {/* Rating row matching first screenshot stars line */}
@@ -431,8 +431,8 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
 
                       {/* Discreet Tag matching exact screenshots label */}
                       {p.discreetShipping && (
-                        <p className="flex items-center gap-1 font-mono uppercase text-[9.5px] font-bold text-zinc-500 tracking-wider mt-1 border-t border-violet-950/20 pt-1.5">
-                          <ShieldCheck className="w-3.5 h-3.5 text-indigo-400" />
+                        <p className="flex items-center gap-1 font-mono uppercase text-[9.5px] font-bold text-zinc-500 tracking-wider mt-1 border-t border-zinc-900 pt-1.5">
+                          <ShieldCheck className="w-3.5 h-3.5 text-amber-500" />
                           <span>Discreet Shipping</span>
                         </p>
                       )}
@@ -444,7 +444,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
                         <button
                           id={`catalog-detail-trigger-${p.id}`}
                           onClick={() => handleProductClick(p)}
-                          className="cursor-pointer px-3.5 py-1.5 bg-[#170E2F] hover:bg-violet-650 text-fuchsia-300 border border-violet-850/60 hover:text-white rounded text-[10.5px] font-mono font-semibold uppercase tracking-wider transition-colors duration-300"
+                          className="cursor-pointer px-3.5 py-1.5 bg-[#111] hover:bg-zinc-900 text-amber-500 border border-zinc-800 hover:text-white rounded text-[10.5px] font-mono font-semibold uppercase tracking-wider transition-colors duration-300"
                         >
                           View Details
                         </button>
@@ -457,24 +457,24 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
           )}
 
           {/* SPREAD MODERN PAGINATION NUMBERS exactly matching screenshot 1 layout */}
-          <div id="pagination-panel" className="w-full flex justify-center items-center gap-2 mt-12 py-6 border-t border-violet-950/30">
-            <button className="px-3 py-2 border border-violet-950 bg-[#160D2D]/35 rounded hover:border-violet-600 text-zinc-400 hover:text-white font-mono text-xs">
+          <div id="pagination-panel" className="w-full flex justify-center items-center gap-2 mt-12 py-6 border-t border-zinc-900">
+            <button className="px-3 py-2 border border-zinc-800 bg-[#111] rounded hover:border-amber-500 text-zinc-400 hover:text-white font-mono text-xs cursor-pointer">
               &lt;
             </button>
-            <button className="px-4 py-2 bg-gradient-to-tr from-violet-600 to-fuchsia-500 border border-violet-500 rounded text-white font-mono font-bold text-xs select-none">
+            <button className="px-4 py-2 bg-amber-500 hover:bg-amber-600 border border-amber-600 rounded text-black font-mono font-bold text-xs select-none cursor-pointer">
               1
             </button>
-            <button className="px-4 py-2 border border-violet-950 bg-[#160D2D]/35 rounded hover:border-violet-600 text-zinc-403 hover:text-white font-mono text-xs transition-colors">
+            <button className="px-4 py-2 border border-zinc-800 bg-[#111] rounded hover:border-amber-500 text-zinc-300 hover:text-white font-mono text-xs transition-colors cursor-pointer">
               2
             </button>
-            <button className="px-4 py-2 border border-violet-950 bg-[#160D2D]/35 rounded hover:border-violet-600 text-zinc-403 hover:text-white font-mono text-xs transition-colors">
+            <button className="px-4 py-2 border border-zinc-800 bg-[#111] rounded hover:border-amber-500 text-zinc-300 hover:text-white font-mono text-xs transition-colors cursor-pointer">
               3
             </button>
-            <span className="px-2 font-mono text-zinc-650">...</span>
-            <button className="px-4 py-2 border border-violet-950 bg-[#160D2D]/35 rounded hover:border-violet-600 text-zinc-403 hover:text-white font-mono text-xs transition-colors">
+            <span className="px-2 font-mono text-zinc-600">...</span>
+            <button className="px-4 py-2 border border-zinc-800 bg-[#111] rounded hover:border-amber-500 text-zinc-300 hover:text-white font-mono text-xs transition-colors cursor-pointer">
               12
             </button>
-            <button className="px-3 py-2 border border-violet-950 bg-[#160D2D]/35 rounded hover:border-violet-600 text-zinc-404 hover:text-white font-mono text-xs">
+            <button className="px-3 py-2 border border-zinc-800 bg-[#111] rounded hover:border-amber-500 text-zinc-400 hover:text-white font-mono text-xs cursor-pointer">
               &gt;
             </button>
           </div>
@@ -489,7 +489,7 @@ export const CategoryView: React.FC<CategoryViewProps> = ({
             <button
               key={idx}
               onClick={() => setSelectedCategory(tag.cat as CategoryId)}
-              className="px-6 py-3 border border-zinc-900 bg-[#0A0713]/55 hover:bg-violet-950/15 text-zinc-300 hover:text-white rounded-full font-serif text-sm tracking-wide hover:border-violet-750 cursor-pointer duration-300"
+              className="px-6 py-3 border border-zinc-800 bg-zinc-950/55 hover:bg-zinc-900/50 text-zinc-300 hover:text-amber-500 rounded-full font-serif text-sm tracking-wide hover:border-amber-500 cursor-pointer duration-305"
             >
               {tag.label}
             </button>

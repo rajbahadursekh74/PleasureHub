@@ -1,6 +1,6 @@
 {
-  "name": "PleasureHub",
-  "description": "Premium 18+ Adult Products eCommerce Store. A safe, secure, and discreet shopping experience.",
+  "name": "FeshtaWish",
+  "description": "Premium Fashion Boutique for Men & Women. Explore curated designer apparel, elegant footwear, and luxury fashion accessories.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

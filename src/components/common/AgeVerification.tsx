@@ -17,10 +17,10 @@ export const AgeVerification: React.FC<AgeVerificationProps> = ({ onVerify }) =>
 
   return (
     <div id="age-verification-overlay" className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4">
-      <div id="age-card" className="bg-[#0f0f12] border border-white/10 w-[480px] p-8 md:p-10 rounded-3xl shadow-[0_0_100px_rgba(139,92,246,0.15)] text-center relative">
+      <div id="age-card" className="bg-[#0f0f12] border border-white/5 w-[480px] p-8 md:p-10 rounded-3xl shadow-[0_0_100px_rgba(245,158,11,0.06)] text-center relative">
         {/* Rotate Graphic badge */}
-        <div id="age-badge-glow" className="w-16 h-16 bg-purple-600 rounded-2xl mx-auto mb-6 flex items-center justify-center rotate-3 shadow-[0_0_20px_rgba(147,51,234,0.4)]">
-           <span id="badge-18-label" className="text-2xl font-black text-white uppercase tracking-wider select-none font-serif">18+</span>
+        <div id="age-badge-glow" className="w-16 h-16 bg-amber-500 text-black rounded-2xl mx-auto mb-6 flex items-center justify-center rotate-3 shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+           <span id="badge-18-label" className="text-2xl font-black uppercase tracking-wider select-none font-serif">18+</span>
         </div>
 
         {/* Header Texts */}
@@ -37,7 +37,7 @@ export const AgeVerification: React.FC<AgeVerificationProps> = ({ onVerify }) =>
           <button
             id="btn-confirm-age"
             onClick={handleVerify}
-            className="w-full py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(147,51,234,0.3)] tracking-wide cursor-pointer active:scale-95"
+            className="w-full py-4.5 bg-amber-500 hover:bg-amber-600 text-black font-black uppercase font-mono tracking-widest text-xs rounded-full transition-all shadow-[0_0_20px_rgba(245,158,11,0.2)] cursor-pointer active:scale-95"
           >
             I am over 18 - Enter
           </button>
@@ -45,7 +45,7 @@ export const AgeVerification: React.FC<AgeVerificationProps> = ({ onVerify }) =>
           <button
             id="btn-reject-age"
             onClick={handleExit}
-            className="w-full py-4 bg-transparent border border-white/10 text-gray-400 font-medium rounded-xl hover:bg-white/5 hover:text-white transition-all cursor-pointer"
+            className="w-full py-4.5 bg-transparent border border-white/10 text-gray-400 font-medium rounded-full hover:bg-white/5 hover:text-white transition-all cursor-pointer"
           >
             I am under 18 - Exit
           </button>
@@ -55,12 +55,12 @@ export const AgeVerification: React.FC<AgeVerificationProps> = ({ onVerify }) =>
         <div className="w-full border-t border-white/5 my-8" />
 
         {/* Discreet trust tags */}
-        <div id="seals-panel" className="flex justify-center items-center gap-4 text-[10px] text-gray-400 uppercase tracking-wider font-mono">
-          <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-purple-400" /> SECURE</span>
-          <span className="text-gray-700">•</span>
-          <span className="flex items-center gap-1"><Truck className="w-3.5 h-3.5 text-purple-400" /> DISCREET</span>
-          <span className="text-gray-700">•</span>
-          <span className="flex items-center gap-1"><CreditCard className="w-3.5 h-3.5 text-purple-400" /> PRIVATE</span>
+        <div id="seals-panel" className="flex justify-center items-center gap-4 text-[10px] text-gray-450 uppercase tracking-wider font-mono">
+          <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-amber-505" /> SECURE</span>
+          <span className="text-gray-750">•</span>
+          <span className="flex items-center gap-1"><Truck className="w-3.5 h-3.5 text-amber-505" /> DISCREET</span>
+          <span className="text-gray-750">•</span>
+          <span className="flex items-center gap-1"><CreditCard className="w-3.5 h-3.5 text-amber-505" /> PRIVATE</span>
         </div>
       </div>
 

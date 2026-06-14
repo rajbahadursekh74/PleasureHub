@@ -1,7 +1,7 @@
 import React from 'react';
-import { Search, Heart, ShoppingBag, User, ShieldCheck, Lock, ChevronDown, Menu, X } from 'lucide-react';
-import { CategoryId } from '../types';
-import { CURRENCIES, CurrencyConfig } from '../utils/currency';
+import { Search, Heart, ShoppingBag, User, ShieldCheck, Lock, ChevronDown, Menu, X, Sun, Moon } from 'lucide-react';
+import { CategoryId } from '../../types';
+import { CURRENCIES, CurrencyConfig } from '../../utils/currency';
 
 interface HeaderProps {
   activeView: string;
@@ -19,6 +19,8 @@ interface HeaderProps {
   discreetBillingName: string;
   activeCurrency: CurrencyConfig;
   setActiveCurrency: (curr: CurrencyConfig) => void;
+  theme: 'dark' | 'light';
+  onThemeToggle: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -37,10 +39,18 @@ export const Header: React.FC<HeaderProps> = ({
   discreetBillingName,
   activeCurrency,
   setActiveCurrency,
+  theme,
+  onThemeToggle,
 }) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [langDropdown, setLangDropdown] = React.useState(false);
   const [currencyDropdown, setCurrencyDropdown] = React.useState(false);
+
+  // Hidden 5-tap admin activation state
+  const [logoClicks, setLogoClicks] = React.useState(0);
+  const [lastLogoClick, setLastLogoClick] = React.useState(0);
+  const [cartBagClicks, setCartBagClicks] = React.useState(0);
+  const [lastCartBagClick, setLastCartBagClick] = React.useState(0);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -56,22 +66,50 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   const handleLogoClick = () => {
-    setSearchTerm('');
-    setActiveView('home');
-    setMenuOpen(false);
+    const now = Date.now();
+    const isQuick = now - lastLogoClick < 3000;
+    const nextCount = isQuick ? logoClicks + 1 : 1;
+    setLogoClicks(nextCount);
+    setLastLogoClick(now);
+
+    if (nextCount >= 5) {
+      setLogoClicks(0);
+      setActiveView('admin');
+      setMenuOpen(false);
+    } else {
+      setSearchTerm('');
+      setActiveView('home');
+      setMenuOpen(false);
+    }
+  };
+
+  const handleCartBagClick = () => {
+    const now = Date.now();
+    const isQuick = now - lastCartBagClick < 3000;
+    const nextCount = isQuick ? cartBagClicks + 1 : 1;
+    setCartBagClicks(nextCount);
+    setLastCartBagClick(now);
+
+    if (nextCount >= 5) {
+      setCartBagClicks(0);
+      setActiveView('admin');
+      setMenuOpen(false);
+    } else {
+      onOpenCart();
+    }
   };
 
   return (
     <header id="app-wide-header" className="sticky top-0 z-40 w-full bg-black/90 backdrop-blur-md border-b border-white/10 text-zinc-100">
-      {/* Discreet Statement Ticker Bar */}
+      {/* Premium Statement Ticker Bar */}
       <div id="top-discreet-alert" className="w-full bg-[#0a0a0c] text-[10px] md:text-xs py-1.5 px-4 flex justify-between items-center text-gray-450 font-sans border-b border-white/5">
         <span id="discreet-shipping-notice" className="flex items-center gap-1.5 text-gray-450 text-[11px]">
-          <ShieldCheck id="ico-header-alert" className="w-3.5 h-3.5 text-purple-450" />
-          100% Plain packaging, discreet courier delivery
+          <ShieldCheck id="ico-header-alert" className="w-3.5 h-3.5 text-amber-500" />
+          Premium gift packaging, expedited courier delivery
         </span>
         <span id="discreet-billing-notice" className="hidden sm:flex items-center gap-1 text-gray-400 text-[11px]">
-          <Lock id="ico-header-lock" className="w-3 h-3 text-purple-450" />
-          Statement credit label: <strong className="text-zinc-250 font-mono text-[11px] ml-1">{discreetBillingName}</strong>
+          <Lock id="ico-header-lock" className="w-3 h-3 text-amber-500" />
+          Secure billing label: <strong className="text-zinc-250 font-mono text-[11px] ml-1">{discreetBillingName}</strong>
         </span>
         <div className="flex items-center gap-3.5">
           {/* Dynamic Currency / Country Selector */}
@@ -82,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({
                 setCurrencyDropdown(!currencyDropdown);
                 setLangDropdown(false);
               }}
-              className="flex items-center gap-1.5 text-[10.5px] font-bold cursor-pointer hover:text-purple-400 text-gray-400 transition-colors uppercase font-mono"
+              className="flex items-center gap-1.5 text-[10.5px] font-bold cursor-pointer hover:text-amber-400 text-gray-400 transition-colors uppercase font-mono"
             >
               <span className="text-xs shrink-0">{activeCurrency.flag}</span>
               <span className="tracking-wide">{activeCurrency.code} ({activeCurrency.symbol})</span>
@@ -98,7 +136,7 @@ export const Header: React.FC<HeaderProps> = ({
                       setActiveCurrency(curr);
                       setCurrencyDropdown(false);
                     }}
-                    className={`w-full text-left px-3 py-1.5 flex items-center gap-2 hover:bg-white/5 hover:text-purple-450 cursor-pointer ${activeCurrency.code === curr.code ? 'text-purple-400 font-bold bg-white/5' : 'text-zinc-300'}`}
+                    className={`w-full text-left px-3 py-1.5 flex items-center gap-2 hover:bg-white/5 hover:text-amber-500 cursor-pointer ${activeCurrency.code === curr.code ? 'text-amber-400 font-bold bg-white/5' : 'text-zinc-300'}`}
                   >
                     <span className="text-sm shrink-0">{curr.flag}</span>
                     <span className="flex-grow">{curr.name}</span>
@@ -119,7 +157,7 @@ export const Header: React.FC<HeaderProps> = ({
                 setLangDropdown(!langDropdown);
                 setCurrencyDropdown(false);
               }}
-              className="flex items-center gap-1 text-[10px] uppercase font-semibold cursor-pointer hover:text-purple-400 text-gray-400"
+              className="flex items-center gap-1 text-[10px] uppercase font-semibold cursor-pointer hover:text-amber-400 text-gray-400"
             >
               {language} <ChevronDown className="w-3 h-3" />
             </button>
@@ -132,7 +170,7 @@ export const Header: React.FC<HeaderProps> = ({
                       setLanguage(lang);
                       setLangDropdown(false);
                     }}
-                    className="w-full text-left px-2 py-1 hover:bg-white/5 hover:text-purple-450 cursor-pointer"
+                    className="w-full text-left px-2 py-1 hover:bg-white/5 hover:text-amber-500 cursor-pointer"
                   >
                     {lang}
                   </button>
@@ -162,14 +200,14 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <div className="relative w-9 h-10 flex items-center justify-center flex-shrink-0">
             {/* Bag handle */}
-            <div className="absolute top-[2px] left-1/2 -translate-x-1/2 w-4.5 h-5 border-2 border-purple-400 rounded-t-full" />
+            <div className="absolute top-[2px] left-1/2 -translate-x-1/2 w-4.5 h-5 border-2 border-amber-400 rounded-t-full" />
             {/* Bag body */}
-            <div className="absolute bottom-[2px] w-8 h-7.5 bg-gradient-to-b from-purple-600 to-indigo-600 rounded-lg shadow-lg flex items-center justify-center text-white font-black text-sm pt-[2px]">
-              P
+            <div className="absolute bottom-[2px] w-8 h-7.5 bg-gradient-to-b from-amber-500 to-yellow-600 rounded-lg shadow-lg flex items-center justify-center text-white font-black text-sm pt-[2px]">
+              F
             </div>
           </div>
           <span id="brand-emblem-logo" className="text-xl font-bold tracking-tight text-white hover:opacity-90 transition-opacity">
-            Pleasure<span className="text-purple-500">Hub</span>
+            Feshta<span className="text-amber-500">Wish</span>
           </span>
         </div>
 
@@ -177,27 +215,27 @@ export const Header: React.FC<HeaderProps> = ({
         <nav id="desktop-routing-links" className="hidden md:flex items-center gap-8 font-sans text-sm font-medium text-gray-400">
           <button
             onClick={handleLogoClick}
-            className={`cursor-pointer hover:text-purple-400 transition-colors duration-200 ${activeView === 'home' ? 'text-purple-450 font-bold' : ''}`}
+            className={`cursor-pointer hover:text-amber-400 transition-colors duration-200 ${activeView === 'home' ? 'text-amber-500 font-bold' : ''}`}
           >
             Home
           </button>
           <button
             onClick={() => navigateToCategory('all')}
-            className={`cursor-pointer hover:text-purple-400 transition-colors duration-200 ${activeView === 'category' ? 'text-purple-450 font-bold' : ''}`}
+            className={`cursor-pointer hover:text-amber-400 transition-colors duration-200 ${activeView === 'category' ? 'text-amber-500 font-bold' : ''}`}
           >
             Collections
           </button>
           <button
-            onClick={() => navigateToCategory('toys')}
-            className="cursor-pointer hover:text-purple-400 transition-colors duration-200"
+            onClick={() => navigateToCategory('men')}
+            className="cursor-pointer hover:text-amber-400 transition-colors duration-200"
           >
-            New Arrivals
+            Men
           </button>
           <button
-            onClick={() => navigateToCategory('couples')}
-            className="cursor-pointer hover:text-purple-400 transition-colors duration-200"
+            onClick={() => navigateToCategory('women')}
+            className="cursor-pointer hover:text-amber-400 transition-colors duration-200"
           >
-            Gifts
+            Women
           </button>
         </nav>
 
@@ -210,32 +248,17 @@ export const Header: React.FC<HeaderProps> = ({
             placeholder="Search collections..."
             value={searchTerm}
             onChange={handleSearchChange}
-            className="w-full bg-[#111] text-xs py-2 px-10 rounded-xl border border-white/10 focus:border-purple-500 focus:outline-none placeholder-gray-500 focus:bg-[#151515] text-zinc-100 transition-all duration-300"
+            className="w-full bg-[#111] text-xs py-2 px-10 rounded-xl border border-white/10 focus:border-amber-500 focus:outline-none placeholder-gray-500 focus:bg-[#151515] text-zinc-100 transition-all duration-300"
           />
         </div>
 
         {/* User Interaction Icons Tray */}
         <div id="user-actions-tray" className="flex items-center gap-3.5 md:gap-5 text-gray-400">
-          {/* Admin shortcut link */}
-          <button
-            id="btn-nav-to-admin"
-            onClick={() => setActiveView(activeView === 'admin' ? 'home' : 'admin')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs border ${
-              activeView === 'admin'
-                ? 'bg-purple-900/40 border-purple-550 text-purple-400'
-                : 'border-white/10 hover:bg-white/5 text-gray-400 hover:text-white'
-            } transition-all duration-200 cursor-pointer`}
-            title="Access Admin Console"
-          >
-            <Lock className="w-3 h-3" />
-            <span className="hidden lg:inline font-semibold">Admin</span>
-          </button>
-
           {/* User Account / Login trigger */}
           <button
             id="btn-nav-to-dashboard"
             onClick={() => setActiveView('dashboard')}
-            className={`hover:text-purple-400 cursor-pointer relative p-1.5 rounded-full hover:bg-white/5 transition-all duration-300 ${activeView === 'dashboard' ? 'text-purple-400' : ''}`}
+            className={`hover:text-amber-400 cursor-pointer relative p-1.5 rounded-full hover:bg-white/5 transition-all duration-300 ${activeView === 'dashboard' ? 'text-amber-400' : ''}`}
             title="User Dashboard"
           >
             <User className="w-5 h-5" />
@@ -250,27 +273,40 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => {
               setActiveView('dashboard');
             }}
-            className="hover:text-purple-400 cursor-pointer relative p-1.5 rounded-full hover:bg-white/5 transition-all duration-300"
+            className="hover:text-amber-400 cursor-pointer relative p-1.5 rounded-full hover:bg-white/5 transition-all duration-300"
             title="Wishlist"
           >
             <Heart className="w-5 h-5" />
             {wishlistCount > 0 && (
-              <span id="wishlist-badge" className="absolute top-0 right-0 bg-purple-600 text-white font-sans text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+              <span id="wishlist-badge" className="absolute top-0 right-0 bg-amber-600 text-white font-sans text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
                 {wishlistCount}
               </span>
+            )}
+          </button>
+          {/* Day / Night Theme Mood Toggle */}
+          <button
+            id="btn-toggle-theme"
+            onClick={onThemeToggle}
+            className="hover:text-amber-500 cursor-pointer p-1.5 rounded-full hover:bg-white/5 transition-all duration-300 relative text-gray-400"
+            title={theme === 'dark' ? 'Switch to Day Mood' : 'Switch to Night Mood'}
+          >
+            {theme === 'dark' ? (
+              <Sun className="w-5 h-5 text-amber-500 animate-spin-slow" />
+            ) : (
+              <Moon className="w-5 h-5 text-zinc-800 fill-zinc-800" />
             )}
           </button>
 
           {/* Shopping Cart Drawer Trigger */}
           <button
             id="btn-trigger-cart"
-            onClick={onOpenCart}
-            className="hover:text-purple-400 cursor-pointer relative p-2 rounded-xl bg-white/5 hover:bg-white/10 text-purple-400 border border-white/10 transition-all duration-300"
+            onClick={handleCartBagClick}
+            className="hover:text-amber-400 cursor-pointer relative p-2 rounded-xl bg-white/5 hover:bg-white/10 text-amber-400 border border-white/10 transition-all duration-300"
             title="Open Shopping Bag"
           >
             <ShoppingBag className="w-5 h-5" />
             {cartCount > 0 && (
-              <span id="cart-item-badge" className="absolute -top-1.5 -right-1.5 bg-purple-600 text-white font-sans text-[9.5px] w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-[0_2px_8px_rgba(139,92,246,0.5)]">
+              <span id="cart-item-badge" className="absolute -top-1.5 -right-1.5 bg-amber-600 text-white font-sans text-[9.5px] w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-[0_2px_8px_rgba(245,158,11,0.5)]">
                 {cartCount}
               </span>
             )}
@@ -296,34 +332,56 @@ export const Header: React.FC<HeaderProps> = ({
 
           <button
             onClick={handleLogoClick}
-            className="text-left font-sans text-lg py-1.5 border-b border-white/5 hover:text-purple-400 text-zinc-100"
+            className="text-left font-sans text-lg py-1.5 border-b border-white/5 hover:text-amber-400 text-zinc-100"
           >
             Home
           </button>
           <button
             onClick={() => navigateToCategory('all')}
-            className="text-left font-sans text-lg py-1.5 border-b border-white/5 hover:text-purple-400 text-zinc-100"
+            className="text-left font-sans text-lg py-1.5 border-b border-white/5 hover:text-amber-400 text-zinc-100"
           >
             Collections
           </button>
           <button
-            onClick={() => navigateToCategory('toys')}
-            className="text-left font-sans text-lg py-1.5 border-b border-white/5 hover:text-purple-400 text-zinc-100"
+            onClick={() => navigateToCategory('men')}
+            className="text-left font-sans text-lg py-1.5 border-b border-white/5 hover:text-amber-400 text-zinc-100"
           >
-            Adult Toys
+            Men's Wear
           </button>
           <button
-            onClick={() => navigateToCategory('lingerie')}
-            className="text-left font-sans text-lg py-1.5 border-b border-white/5 hover:text-purple-400 text-zinc-100"
+            onClick={() => navigateToCategory('women')}
+            className="text-left font-sans text-lg py-1.5 border-b border-white/5 hover:text-amber-400 text-zinc-100"
           >
-            Lingerie
+            Women's Wear
           </button>
           <button
-            onClick={() => navigateToCategory('couples')}
-            className="text-left font-sans text-lg py-1.5 border-b border-white/5 hover:text-purple-400 text-zinc-100"
+            onClick={() => navigateToCategory('ethnic')}
+            className="text-left font-sans text-lg py-1.5 border-b border-white/5 hover:text-amber-400 text-zinc-100"
           >
-            Couples Items
+            Ethnic Wear
           </button>
+
+          {/* Day / Night Theme Mood Toggle for Mobile */}
+          <div className="border-t border-white/5 pt-4 flex items-center justify-between">
+            <span className="text-sm font-sans font-semibold text-zinc-350">
+              {theme === 'dark' ? 'Night Mood (Dark)' : 'Day Mood (Light)'}
+            </span>
+            <button
+              id="btn-toggle-theme-mobile"
+              onClick={onThemeToggle}
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-amber-400 border border-white/10 transition-all font-mono text-xs uppercase font-bold tracking-wider cursor-pointer"
+            >
+              {theme === 'dark' ? (
+                <>
+                  <Sun className="w-4 h-4 text-amber-500 animate-spin-slow" /> Day Mood
+                </>
+              ) : (
+                <>
+                  <Moon className="w-4 h-4 text-zinc-700" /> Night Mood
+                </>
+              )}
+            </button>
+          </div>
 
           {/* User management options */}
           <div id="mobile-drawer-footer" className="pt-6 flex flex-col gap-3">
@@ -340,7 +398,7 @@ export const Header: React.FC<HeaderProps> = ({
                   setActiveView('dashboard');
                   setMenuOpen(false);
                 }}
-                className="w-full py-2.5 rounded-xl bg-purple-600 hover:bg-purple-750 text-white text-xs font-semibold uppercase tracking-wider"
+                className="w-full py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold uppercase tracking-wider"
               >
                 Sign In / Join Store
               </button>

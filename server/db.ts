@@ -25,260 +25,257 @@ export interface DbData {
 // Default initial data for seeding
 const INITIAL_PRODUCTS: Product[] = [
   {
-    id: 'sona-2-cruise',
-    name: 'Sona 2 Cruise',
-    price: 189.00,
+    id: 'classy-oxford-shoes',
+    name: 'Classy Italian Oxford Shoes',
+    price: 145.00,
+    originalPrice: 195.00,
     rating: 4.8,
-    reviewCount: 1240,
-    description: 'Discover the depth of clitoral sensory stimulation. Utilizing sonic waves to reach 75% more volume without direct contact, the Sona 2 Cruise offers deep, rumbling vibrations with intelligent Cruise Control speed monitoring.',
-    category: 'toys',
-    images: ['sona_purple_1', 'sona_purple_2', 'sona_purple_3'],
+    reviewCount: 384,
+    description: 'Impeccably crafted from genuine full-grain Italian leather, these Oxford shoes feature classic closed-lacing architecture. Built with memory foam insoles for unrivaled comfort and a hand-painted antique patina finish.',
+    category: 'footwear',
+    images: ['oxford_brown_1', 'oxford_brown_2'],
     specs: {
-      'Material': 'Medical-grade Silicone, ABS Polymer',
-      'Waterproofness': 'IPX7 Waterproof (up to 1m)',
-      'Vibration Modes': '12 Sonic Pleasure Settings',
-      'Battery Life': 'Up to 2 Hours',
-      'Charging Time': '1.5 Hours via USB',
-      'Sound Level': 'Ultra-Quiet < 45dB'
+      'Sole Material': 'Durable Vulcanized Rubber',
+      'Construction': 'Premium Blake Stitching',
+      'Lining': 'Breathable Calfskin Leather',
+      'Insole': 'Cushioned Memory Foam Pad',
+      'Width': 'Standard (Medium D)'
     },
-    materials: ['Medical Silicone', 'ABS Polymer'],
-    brand: 'Sona Tech',
+    materials: ['Full-Grain Italian Leather', 'Calfskin', 'Rubber'],
+    brand: 'Aura Elegance',
     isBestSeller: true,
-    stock: 24,
-    discreetShipping: true
+    stock: 45,
+    discreetShipping: false
   },
   {
-    id: 'enigma-wave',
-    name: 'Enigma Wave',
-    price: 219.00,
+    id: 'luxe-trench-coat',
+    name: 'Luxe Double-Breasted Trench Coat',
+    price: 210.00,
     rating: 4.9,
-    reviewCount: 854,
-    description: 'The definitive sonic massager designed for simultaneous dual stimulation. Gently targeting coordinates through subtle pressure waves while matching internal rhythms with an undulating ergonomic shaft.',
-    category: 'toys',
-    images: ['enigma_gold_1', 'enigma_gold_2'],
+    reviewCount: 156,
+    description: 'An iconic silhouette for all weather conditions. Impeccably tailored from water-repellent organic cotton gabardine, incorporating storm flaps, a detachable belt buckle, dynamic throat latches, and bespoke jacquard silk interior linwork.',
+    category: 'outerwear',
+    images: ['trench_beige_1', 'trench_beige_2'],
     specs: {
-      'Material': 'Medical-grade Silicone, Gold-plated Alloy',
-      'Dual Stimulation': 'Sonic clitoral + G-spot waves',
-      'Waterproofness': '100% Waterproof',
-      'Speeds': '10 customizable frequencies',
-      'Sound Level': 'Silent operation < 50dB'
+      'Fabric Weight': 'Medium Weight (340 GSM)',
+      'Waterproofness': 'DWR (Durable Water Repellent) Finish',
+      'Pockets': 'Dual Outer Welt, Internal Security Pocket',
+      'Fit': 'Tailored / Standard Fit'
     },
-    materials: ['Medical Silicone', 'Metallic'],
-    brand: 'Lelo',
-    isBestSeller: true,
-    stock: 12,
-    discreetShipping: true
+    materials: ['Organic Cotton Gabardine', 'Bespoke Jacquard Silk'],
+    brand: 'VogueNest',
+    isNewArrival: true,
+    stock: 18,
+    discreetShipping: false
   },
   {
-    id: 'aria-premium',
-    name: 'Aria Premium',
+    id: 'leather-tote-bag',
+    name: 'Bespoke Saffiano Shoulder Tote Bag',
+    price: 189.00,
+    rating: 4.7,
+    reviewCount: 220,
+    description: 'The quintessential minimalist leather accessory for work, travel, and leisure. Finished in durable cross-grain Saffiano leather, structured with gold-toned metal zippers, a dedicated tablet compartment, and hand-stitched handles.',
+    category: 'bags',
+    images: ['tote_black_1', 'tote_black_2'],
+    specs: {
+      'Leather Type': 'Premium Saffiano Cross-Grain',
+      'Hardware': '24k Gold-Plated Heavy-Duty Zinc Alloy',
+      'Dimensions': '38 x 28 x 14 cm',
+      'Capacity': 'Fits up to 14" Laptop & Tablet'
+    },
+    materials: ['Saffiano Leather', 'Gold-Plated Alloy', 'Canvas Lining'],
+    brand: 'Sarto Italian',
+    isBestSeller: true,
+    stock: 22,
+    discreetShipping: false
+  },
+  {
+    id: 'silk-mididress',
+    name: 'Athenian Floral Cowl Midi Dress',
+    price: 135.00,
+    rating: 4.9,
+    reviewCount: 412,
+    description: 'Turn heads at any gather with this stunning cowl-neck slip midi dress. Cut on the bias from luxurious mulberry silk, it hugs natural proportions gracefully with a delicate floral print and an open crossover back detail.',
+    category: 'women',
+    images: ['dress_floral_1', 'dress_floral_2'],
+    specs: {
+      'Material': '100% Organic Mulberry Silk (19 Momme)',
+      'Weaving': 'Luminous Satin Slip Finish',
+      'Closure': 'Concealed Side YKK Slide Zipper',
+      'Length': 'Midi-length Silhouette'
+    },
+    materials: ['Mulberry Silk', 'Satin'],
+    brand: 'Feshta Studio',
+    isBestSeller: true,
+    stock: 14,
+    discreetShipping: false
+  },
+  {
+    id: 'slimfit-wool-suit',
+    name: 'Imperial Two-Piece Slim Wool Suit',
     price: 345.00,
     originalPrice: 395.00,
     rating: 4.9,
-    reviewCount: 321,
-    description: 'Indulge in the crown jewel of intimate engineering. The Aria Premium combines responsive smart biosensors with premium obsidian finishes to sync vibrations to your biological temperature and heart rate.',
-    category: 'toys',
-    images: ['aria_black_1', 'aria_black_2'],
-    specs: {
-      'Material': 'Obsidian Surgical-grade Bio-Silicone',
-      'Key Tech': 'Heart-rate bio feedback pacing',
-      'Waterproofness': 'IPX7 rated',
-      'Battery': 'Integrated rechargeable polymer',
-      'Exclusive': 'Limited Editon Case included'
-    },
-    materials: ['Medical Silicone', 'Glass', 'Metallic'],
-    brand: 'Aria Luxe',
-    isLimited: true,
-    stock: 5,
-    discreetShipping: true
-  },
-  {
-    id: 'luna-silk-ii',
-    name: 'Luna Silk II',
-    price: 129.00,
-    originalPrice: 149.00,
-    rating: 4.7,
-    reviewCount: 2420,
-    description: 'Perfect, sleek, and pocketable pebble massager. Coated with organic velvet soft silicone, featuring micro-resonance motors designed to concentrate pleasure precisely where you desire.',
-    category: 'massagers',
-    images: ['luna_silk_1', 'luna_silk_2'],
-    specs: {
-      'Size': '85 x 42 x 30 mm',
-      'Material': 'Satin-textured medical silicone',
-      'Modulation': 'Continuous variable slider',
-      'Charging': 'Wireless charging dock'
-    },
-    materials: ['Medical Silicone'],
-    brand: 'Luna Intime',
-    isBestSeller: true,
-    stock: 45,
-    discreetShipping: true
-  },
-  {
-    id: 'solitaire-aura',
-    name: 'Solitaire Aura',
-    price: 189.00,
-    rating: 4.6,
-    reviewCount: 145,
-    description: 'A masterpiece of sleek silhouette. The Solitaire Aura features internal dual-pulse resonance designed for elegant pelvic floor toning and muscle-deep release with whisper-quiet frequency tuning.',
-    category: 'toys',
-    images: ['aura_blue_1'],
-    specs: {
-      'Material': 'Liquid silicone formulation',
-      'Modes': '8 deep pulse sequences',
-      'Connectivity': 'Bluetooth Smart App integration'
-    },
-    materials: ['Medical Silicone'],
-    brand: 'Sona Tech',
-    isNewArrival: true,
-    stock: 18,
-    discreetShipping: true
-  },
-  {
-    id: 'midnight-bloom',
-    name: 'Midnight Bloom Set',
-    price: 75.00,
-    rating: 4.8,
     reviewCount: 92,
-    description: 'Prepare your chambers for sensory transformation. This set includes dynamic botanical massage candles that melt at body temperature, blended with organic black orchid and sandalwood oils.',
-    category: 'accessories',
-    images: ['candles_purple_1'],
+    description: 'Exemplify sharp tailoring in this impeccable two-piece suit. Half-canvassed construction from ultra-fine Australian Merino wool. The blazer features elegant notch lapels and natural shoulders, paired with flat-front trousers.',
+    category: 'men',
+    images: ['suit_navy_1', 'suit_navy_2'],
     specs: {
-      'Wax Type': 'Organic Low-melt Soy and Coconut',
-      'Scent Notes': 'Black Orchid, Sandalwood, Warm Amber',
-      'Pouring Volume': '3 x 150ml premium jars',
-      'Safe Temperature': 'Melt trigger at exactly 38°C (100°F)'
+      'Weave Type': 'Super 120s Australian Merino Wool',
+      'Canvassing': 'Half-Canvas Construction',
+      'Lining': 'Bemberg Breathable Cupro Mesh',
+      'Lapels': 'Modern Notch Lapel (7.5 cm width)'
     },
-    materials: ['Glass', 'Medical Silicone'],
-    brand: 'Aura Bloom',
-    isNewArrival: true,
-    stock: 30,
-    discreetShipping: true
+    materials: ['Merino Wool', 'Bemberg Cupro'],
+    brand: 'Dapper Craft',
+    isLimited: true,
+    stock: 8,
+    discreetShipping: false
   },
   {
-    id: 'ethereal-air',
-    name: 'Ethereal Air',
-    price: 210.00,
-    rating: 4.7,
-    reviewCount: 64,
-    description: 'An ethereal sensation from the future. Ethereal Air leverages hyper-fast air micro-vibrations to create custom waveforms that recreate the sensation of weightlessness and warm air-flows.',
-    category: 'toys',
-    images: ['ethereal_purple_1'],
+    id: 'linen-casual-shirt',
+    name: 'Riviera Casual Linen Button-Down',
+    price: 75.00,
+    rating: 4.6,
+    reviewCount: 310,
+    description: 'Perfect for warm coastal breezes and relaxed office work. Woven from 100% natural organic French flax linen, pre-washed for extraordinary softness and styled with structured button-down collars.',
+    category: 'men',
+    images: ['shirt_white_1', 'shirt_white_2'],
     specs: {
-      'Technology': 'Aerodynamic micro-waves',
-      'Material': 'Ultralight medical silicone',
-      'Battery': 'Sustained 3-hour operation'
+      'Fabric Style': '100% Pure French Flax Linen',
+      'Collar Type': 'Casual Button-Down Style',
+      'Cuffs': 'Adjustable Mitred Barrel Cuffs',
+      'Washing': 'Garment-washed for zero shrinkage'
     },
-    materials: ['Medical Silicone', 'ABS Polymer'],
-    brand: 'Aria Luxe',
+    materials: ['French Flax Linen'],
+    brand: 'Dapper Craft',
+    isNewArrival: true,
+    stock: 60,
+    discreetShipping: false
+  },
+  {
+    id: 'athleisure-tech-jogger',
+    name: 'Velocity Tech Athleisure Joggers',
+    price: 89.00,
+    rating: 4.7,
+    reviewCount: 145,
+    description: 'High-performance joggers designed to transition effortlessly from urban exploration to high-intensity gym routines. Engineered with dry-fit four-way stretch fiber tech, water-resistant zip pockets, and tapered cuffs.',
+    category: 'activewear',
+    images: ['jogger_grey_1'],
+    specs: {
+      'Fabric formulation': '88% Drifit Nylon, 12% Spandex Blend',
+      'Elasticity': '4-Way Highly Responsive Stretch',
+      'Pockets': 'Dual Zippered Side Pockets, Hidden Phone Card Pocket'
+    },
+    materials: ['Nylon', 'Spandex'],
+    brand: 'Aero Fit',
+    isNewArrival: true,
+    stock: 40,
+    discreetShipping: false
+  },
+  {
+    id: 'designer-kurtiset',
+    name: 'Adorned Georgette Festive Kurti Set',
+    price: 129.00,
+    rating: 4.8,
+    reviewCount: 205,
+    description: 'Celebrate high heritage with this stunning georgette Kurti. Embroidered with delicate traditional Chikankari white-thread work, framed by a soft inner lining, and paired with loose-fitting elegant palazzo trousers and a sheer chiffon dupatta.',
+    category: 'ethnic',
+    images: ['ethnic_mint_1', 'ethnic_mint_2'],
+    specs: {
+      'Embroidery': 'Exquisite Handmade Chikankari Thread Overlay',
+      'Occasions': 'Festive / Wedding Guest / Celebratory',
+      'Lining': 'Hypoallergenic Organic Cambric Cotton',
+      'Package Includes': '1 Kurti Top, 1 Palazzo Bottom, 1 Chiffon Dupatta'
+    },
+    materials: ['Georgette', 'Chiffon', 'Cambric Cotton'],
+    brand: 'Utsav Legacy',
     isNewArrival: true,
     stock: 15,
-    discreetShipping: true
+    discreetShipping: false
   },
   {
-    id: 'velvet-nectar-duo',
-    name: 'Velvet Nectar Duo',
+    id: 'minimalist-aviator-glasses',
+    name: 'Titanium Aviator Sunglasses',
     price: 48.00,
     rating: 4.5,
-    reviewCount: 118,
-    description: 'The duo set of premium, pH-balanced intimacy formulas. Formulated derived entirely from organic extracts, simulating natural lubrication perfectly with non-sticky, completely discreet residue.',
-    category: 'lubricants',
-    images: ['nectar_pink_1'],
+    reviewCount: 184,
+    description: 'Sleek, lightweight titanium frames in a classic aviator frame. Features certified polarized shatterproof UV400 lenses with anti-reflective back coatings for ultimate daytime vision comfort.',
+    category: 'accessories',
+    images: ['aviator_gold_1'],
     specs: {
-      'Base': 'Ultra purity water-based formula',
-      'Volume': '2 x 100ml satin-pump dispensers',
-      'Compatibility': '100% Condom and Toy Safe',
-      'Key Ingredient': 'Soothing aloe-vera and lotus extracts'
+      'Frame Composition': '100% Medical-Grade Pure Titanium',
+      'Lens Protection': 'Polarized TAC, UV400 Rating (100% UVA/UVB Block)',
+      'Dimensions': 'Lens Width 58mm, Bridge 14mm, Temples 142mm'
     },
-    materials: ['ABS Polymer'],
-    brand: 'Nectar Care',
-    isNewArrival: true,
-    stock: 80,
-    discreetShipping: true
-  },
-  {
-    id: 'provocateur-lace',
-    name: 'Provocateur Silk & Lace',
-    price: 135.00,
-    rating: 4.9,
-    reviewCount: 220,
-    description: 'Intricately engineered luxury lingerie set. Structured with micro-mesh support webs, premium mulberry silk bands, and sheer floral laces designed to contour seamlessly around standard anatomical proportions.',
-    category: 'lingerie',
-    images: ['lingerie_black_1'],
-    specs: {
-      'Material': '85% Mulberry Silk, 15% Elastane',
-      'Weaving': 'Handcrafted French lace overlays',
-      'Closure': 'Secure 24-carat gold-plated hook closures',
-      'Care': 'Delicate hand-wash only'
-    },
-    materials: ['Metallic'],
-    brand: 'Couture Intimate',
-    isBestSeller: true,
-    stock: 8,
-    discreetShipping: true
+    materials: ['Pure Titanium', 'Polarized TAC Lenses'],
+    brand: 'Spec Frame',
+    isNewArrival: false,
+    stock: 50,
+    discreetShipping: false
   }
 ];
 
 const INITIAL_REVIEWS: Review[] = [
   {
     id: 'rev-1',
-    productId: 'sona-2-cruise',
-    userName: 'Sarah J.',
+    productId: 'classy-oxford-shoes',
+    userName: 'Aarav S.',
     rating: 5,
     date: '2026-05-15',
-    comment: 'Absolutely mind-blowing. The sonic cruise control features work exactly as advertised, adjusting dynamically to direct touch. Packed in completely plain brown cardboard wrapping with no logo, which was wonderful!',
+    comment: 'Exceptional craftsmanship. The Blake stitching is beautiful, and the antique hand-painted patina looks outstanding. Fits like secondary skin right out of the box!',
     verified: true
   },
   {
     id: 'rev-2',
-    productId: 'sona-2-cruise',
-    userName: 'Marcus K.',
+    productId: 'classy-oxford-shoes',
+    userName: 'Michael R.',
     rating: 5,
     date: '2026-05-28',
-    comment: 'The absolute premium quality is palpable. Easy to clean, charges extremely fast, and the purple color looks exceptionally rich. Recommended by our couples therapist.',
+    comment: 'The full-grain leather is incredibly rich and sturdy. Unbeatable value compared to high-street designer labels. Delivered in a beautiful matte-black presentation pull-drawer box with silk shoe bags!',
     verified: true
   },
   {
     id: 'rev-3',
-    productId: 'enigma-wave',
-    userName: 'Eliza L.',
+    productId: 'silk-mididress',
+    userName: 'Sophia L.',
     rating: 5,
     date: '2026-06-01',
-    comment: 'Bought this together with my fiancé, design-wise it is like a piece of high-tech audio gear. Whisper quiet too! Perfect secure transaction labeled as "PH-Services" on card statements.',
+    comment: 'A true investment in elegant evening attire. The cowl neckline drape is incredibly high-quality, and the genuine satin mulberry silk feels absolute luxury against the skin.',
     verified: true
   },
   {
     id: 'rev-4',
-    productId: 'aria-premium',
-    userName: 'Devon W.',
+    productId: 'slimfit-wool-suit',
+    userName: 'Johnathan D.',
     rating: 5,
     date: '2026-06-04',
-    comment: 'A true investment in personal pleasure. The biological biosubstance syncing feels extremely organic. Package arrived completely sealed.',
+    comment: 'Absolutely stunning formal silhouette. The half-canvas drape is incredibly sophisticated and breaths perfectly. Received dozens of compliments at my gala evening.',
     verified: true
   }
 ];
 
 const INITIAL_COUPONS: Coupon[] = [
   {
-    code: 'PLEASURE20',
+    code: 'FESTIVE20',
     discountType: 'percentage',
     value: 20,
     minPurchase: 100,
     description: '20% Off on purchases of $100 or more'
   },
   {
-    code: 'DISCREET10',
+    code: 'FESHTAWISH10',
     discountType: 'fixed',
     value: 10,
     minPurchase: 50,
     description: '$10 Off on your first checkout of $50+'
   },
   {
-    code: 'LUNALUXE',
+    code: 'AURASTYLE',
     discountType: 'percentage',
     value: 15,
     minPurchase: 0,
-    description: '15% Off across all Products, no minimum'
+    description: '15% Off across all Collections, no minimum'
   }
 ];
 
@@ -286,25 +283,25 @@ const INITIAL_LOGS: AdminLog[] = [
   {
     id: 'log-1',
     timestamp: '2026-06-07 10:15:22',
-    adminName: 'Admin User',
+    adminName: 'Admin Staff',
     action: 'Inventory Update',
-    details: 'Increased stock of Sona 2 Cruise (+10)',
+    details: 'Increased stock of Classy Italian Oxford Shoes (+15)',
     ip: '192.168.1.53'
   },
   {
     id: 'log-2',
     timestamp: '2026-06-07 11:42:01',
-    adminName: 'Admin User',
+    adminName: 'Admin Staff',
     action: 'Security Policy Checked',
-    details: 'Verified SSL bindings, enabled 2FA guidelines',
+    details: 'Verified SSL bindings, updated storefront configuration',
     ip: '192.168.1.53'
   },
   {
     id: 'log-3',
     timestamp: '2026-06-07 13:10:05',
-    adminName: 'Admin User',
+    adminName: 'Admin Staff',
     action: 'Coupon Issued',
-    details: 'Created coupon code "PLEASURE20"',
+    details: 'Created coupon code "FESTIVE20"',
     ip: '192.168.1.53'
   }
 ];
@@ -324,7 +321,7 @@ const INITIAL_USERS: User[] = [
         country: 'United States'
       }
     ],
-    wishlist: ['sona-2-cruise', 'aria-premium'],
+    wishlist: ['classy-oxford-shoes', 'silk-mididress'],
     orders: []
   },
   {
@@ -338,28 +335,28 @@ const INITIAL_USERS: User[] = [
 ];
 
 const DEFAULT_WEB_SETTINGS: WebSettings = {
-  siteName: 'PleasureHub Intimate Logistics',
-  siteLogo: '🔮',
-  theme: 'dark',
-  appIcon: '🧸',
+  siteName: 'FeshtaWish Premium Fashion',
+  siteLogo: '✨',
+  theme: 'light',
+  appIcon: '👔',
   enabled: true,
   maintenanceMode: false,
-  newsletterPromo: 'Join our body-positive mailing circular for 15% off!',
-  smtpServer: 'smtp.pleasurehub.internal',
-  smsGateway: 'sms.pleasurehub.internal',
+  newsletterPromo: 'Join our exclusive style newsletter for 15% off!',
+  smtpServer: 'smtp.feshtawish.com',
+  smsGateway: 'sms.feshtawish.com',
   twoFactorEnabled: true,
   language: 'EN',
-  discreetName: 'PH-Intimate-Svc',
-  upiId: 'pleasurehub@ybl',
-  upiName: 'PleasureHub Logistics Private Limited',
+  discreetName: 'FeshtaWish Fashion',
+  upiId: 'feshtawish@ybl',
+  upiName: 'FeshtaWish Private Limited',
   upiQrCodeUrl: ''
 };
 
 const DEFAULT_SEO_SETTINGS: SeoSettings = {
-  metaTitle: 'PleasureHub | Premium Discreet Wellness Store',
-  metaDescription: 'Explore designer sexual wellness devices, anatomical contour guides, and certified organic intimate formulations with Plain Cardboard shipping privacy.',
-  keywords: 'adult toys, luxury wellness, intimate cosmetics, sexual health, discrete delivery',
-  ogImage: 'https://pleasurehub.secure/images/meta-og.png'
+  metaTitle: 'FeshtaWish | Premium Fashion Clothing & Designer Accessories',
+  metaDescription: 'Explore elegant men\'s suits, silk shirts, designer women\'s midi dresses, stylish footwear, and luxury leather accessories at FeshtaWish.',
+  keywords: 'fashion apparel, designer suits, luxury accessories, ethnic clothing, premium footwear, mens wear, womens wear',
+  ogImage: 'https://feshtawish.com/images/meta-og.png'
 };
 
 const DEFAULT_ADMIN_CREDENTIALS = {

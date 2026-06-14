@@ -38,8 +38,8 @@ import {
   Activity,
   Menu
 } from 'lucide-react';
-import { Product, Order, Coupon, AdminLog, WebSettings, SeoSettings, CategoryId, Staff, User } from '../types';
-import { CATEGORIES } from '../data';
+import { Product, Order, Coupon, AdminLog, WebSettings, SeoSettings, CategoryId, Staff, User } from '../../types';
+import { CATEGORIES } from '../../data';
 
 interface AdminPanelProps {
   products: Product[];
@@ -109,13 +109,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   // Product Creator state
   const [newProdName, setNewProdName] = React.useState('');
   const [newProdPrice, setNewProdPrice] = React.useState(129.00);
-  const [newProdCategory, setNewProdCategory] = React.useState<CategoryId>('toys');
-  const [newProdBrand, setNewProdBrand] = React.useState('Aria Luxe');
+  const [newProdCategory, setNewProdCategory] = React.useState<CategoryId>('footwear');
+  const [newProdBrand, setNewProdBrand] = React.useState('Aura Elegance');
   const [newProdDescription, setNewProdDescription] = React.useState('');
   const [newProdStock, setNewProdStock] = React.useState(25);
-  const [newProdTags, setNewProdTags] = React.useState('sensory, premium, waterproof');
-  const [newProdVariants, setNewProdVariants] = React.useState('Satin Black, Deep Purple, Silver Satin');
-  const [selectedSubCategory, setSelectedSubCategory] = React.useState('Clitoral Stimulators');
+  const [newProdTags, setNewProdTags] = React.useState('sartorial, premium, tailored');
+  const [newProdVariants, setNewProdVariants] = React.useState('Midnight Black, Espresso Brown, Antique Tan');
+  const [selectedSubCategory, setSelectedSubCategory] = React.useState('Formal Footwear');
   const [isFlashSale, setIsFlashSale] = React.useState(false);
   const [isBestSeller, setIsBestSeller] = React.useState(false);
   const [specialPromoBadge, setSpecialPromoBadge] = React.useState('');
@@ -151,9 +151,9 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
   // Staff registry
   const [staffList, setStaffList] = React.useState<Staff[]>([
-    { id: 'S1', name: 'Alina Mercer', username: 'alina_mercer', role: 'admin', status: 'Active', email: 'alina@pleasurehub.com', taskCount: 8 },
-    { id: 'S2', name: 'Jack Vane', username: 'jackv', role: 'staff', status: 'Active', email: 'jack@pleasurehub.com', taskCount: 14 },
-    { id: 'S3', name: 'Sarah Finch', username: 'sarah_f', role: 'staff', status: 'Blocked', email: 'sarah@pleasurehub.com', taskCount: 0 }
+    { id: 'S1', name: 'Alina Mercer', username: 'alina_mercer', role: 'admin', status: 'Active', email: 'alina@feshtawish.com', taskCount: 8 },
+    { id: 'S2', name: 'Jack Vane', username: 'jackv', role: 'staff', status: 'Active', email: 'jack@feshtawish.com', taskCount: 14 },
+    { id: 'S3', name: 'Sarah Finch', username: 'sarah_f', role: 'staff', status: 'Blocked', email: 'sarah@feshtawish.com', taskCount: 0 }
   ]);
   const [newStaffName, setNewStaffName] = React.useState('');
   const [newStaffUser, setNewStaffUser] = React.useState('');
@@ -162,9 +162,9 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
   // Kundenservice support simulated tickets list
   const [supportTickets, setSupportTickets] = React.useState([
-    { id: 'TCK-481', customer: 'Robin J.', message: 'Is my billing description fully discreet? Will it display adult toy names?', date: '1 hour ago', status: 'Unresolved', reply: '' },
-    { id: 'TCK-232', customer: 'Dana K.', message: 'I sent USDT from my Metamask browser but the screen closed. Here is transaction ID: Tx482...', date: '3 hours ago', status: 'Replied', reply: 'USDT payment verified and order approved.' },
-    { id: 'TCK-191', customer: 'Alex T.', message: 'Hello, looking forward to overnight shipping. Thank you for wonderful services.', date: 'Yesterday', status: 'Resolved', reply: 'Delivered in standard brown package.' }
+    { id: 'TCK-481', customer: 'Robin J.', message: 'Can I customize the collar cuff stitches? Is premium gift wrapping included?', date: '1 hour ago', status: 'Unresolved', reply: '' },
+    { id: 'TCK-232', customer: 'Dana K.', message: 'I sent UPI from my Google Pay app but the screen closed. Here is reference ID: UPI830...', date: '3 hours ago', status: 'Replied', reply: 'UPI payment verified and style order approved.' },
+    { id: 'TCK-191', customer: 'Alex T.', message: 'Hello, looking forward to rapid global shipping. Thank you for wonderful services.', date: 'Yesterday', status: 'Resolved', reply: 'Delivered in standard gift pack.' }
   ]);
   const [activeTicketReply, setActiveTicketReply] = React.useState('');
 
@@ -307,7 +307,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
       username: newStaffUser,
       role: newStaffRole,
       status: 'Active',
-      email: newStaffEmail || `${newStaffUser}@pleasurehub.com`,
+      email: newStaffEmail || `${newStaffUser}@feshtawish.com`,
       taskCount: 0
     };
 
@@ -356,7 +356,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
       seoSettings,
       meta: {
         timestamp: new Date().toISOString(),
-        author: 'PleasureHub Systems Secure Node',
+        author: 'FeshtaWish Systems Secure Node',
         version: '1.4'
       }
     };
@@ -364,7 +364,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
     const tokenStr = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(backupObj, null, 2))}`;
     const trigger = document.createElement('a');
     trigger.setAttribute('href', tokenStr);
-    trigger.setAttribute('download', `pleasurehub_backup_${Date.now()}.json`);
+    trigger.setAttribute('download', `feshtawish_backup_${Date.now()}.json`);
     document.body.appendChild(trigger);
     trigger.click();
     trigger.remove();
@@ -402,7 +402,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
             </div>
             <h2 className="text-xl md:text-2xl font-serif font-black text-white tracking-tight uppercase">Security Gate</h2>
             <p className="text-[11px] text-zinc-400 leading-normal max-w-xs mx-auto">
-              This terminal provides administrative access to PleasureHub Storefront settings, inventory databases, and dispatch systems.
+              This terminal provides administrative access to FeshtaWish Storefront settings, inventory databases, and dispatch systems.
             </p>
           </div>
 
@@ -1264,7 +1264,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                     <div className="text-center pb-4 border-b border-zinc-900 space-y-1">
                       <span className="text-lg">🔮</span>
                       <h4 className="font-serif font-black text-white text-base uppercase tracking-wider">OFFICIAL RECIPIENT INVOICE</h4>
-                      <p className="text-[9.5px] text-zinc-500 uppercase tracking-widest">PleasureHub secure Logistics node</p>
+                      <p className="text-[9.5px] text-zinc-500 uppercase tracking-widest">FeshtaWish Secure Logistics Node</p>
                     </div>
 
                     <div className="space-y-3 text-[10.5px]">
@@ -1693,7 +1693,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                           <label className="text-[10px] uppercase font-bold text-zinc-500">Merchant Name:</label>
                           <input
                             type="text"
-                            placeholder="e.g. PleasureHub Intimate Inc."
+                            placeholder="e.g. FeshtaWish Fashion Pvt Ltd"
                             value={webSettings.upiName || ''}
                             onChange={e => onUpdateWebSettings({ ...webSettings, upiName: e.target.value })}
                             className="w-full bg-[#0E091D] border border-violet-950 py-2 px-3 rounded focus:outline-none text-zinc-200"
@@ -1734,7 +1734,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                           <span className="font-bold text-emerald-400 block text-[9px] uppercase tracking-widest">Active QR configurations live preview</span>
                           <p>
                             VPA Account: <strong className="text-zinc-200 font-mono">{webSettings.upiId || 'Not Configured (Using Default)'}</strong> <br />
-                            Display Name: <strong className="text-zinc-200">{webSettings.upiName || 'PleasureHub Logistics (Fallback)'}</strong>
+                            Display Name: <strong className="text-zinc-200">{webSettings.upiName || 'FeshtaWish Fashion (Fallback)'}</strong>
                           </p>
                         </div>
                       </div>
@@ -1748,7 +1748,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
 
                       <div className="space-y-4 pt-1 text-[11px] font-mono leading-relaxed text-zinc-400">
                         <p>
-                          Export PleasureHub intimate database (active inventory, catalog lists, and coupon rulesets) into a standardized, structured `.JSON` backup snapshot document below.
+                          Export FeshtaWish fashion database (active inventory, catalog lists, and coupon rulesets) into a standardized, structured `.JSON` backup snapshot document below.
                         </p>
 
                         <div className="flex gap-2">

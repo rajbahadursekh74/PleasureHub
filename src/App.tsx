@@ -1,22 +1,35 @@
 import React from 'react';
-import { AgeVerification } from './components/AgeVerification';
-import { Header } from './components/Header';
-import { HomeView } from './components/HomeView';
-import { CategoryView } from './components/CategoryView';
-import { ProductDetailView } from './components/ProductDetailView';
-import { CartView } from './components/CartView';
-import { CheckoutView } from './components/CheckoutView';
-import { UserDashboardView } from './components/UserDashboardView';
-import { AdminPanel } from './components/AdminPanel';
-import { LiveChat } from './components/LiveChat';
-import { Footer } from './components/Footer';
+import { AgeVerification } from './components/common/AgeVerification';
+import { Header } from './components/layout/Header';
+import { HomeView } from './components/views/HomeView';
+import { CategoryView } from './components/views/CategoryView';
+import { ProductDetailView } from './components/views/ProductDetailView';
+import { CartView } from './components/views/CartView';
+import { CheckoutView } from './components/views/CheckoutView';
+import { UserDashboardView } from './components/views/UserDashboardView';
+import { AdminPanel } from './components/views/AdminPanel';
+import { LiveChat } from './components/layout/LiveChat';
+import { Footer } from './components/layout/Footer';
 
 import { Product, Order, Coupon, AdminLog, WebSettings, SeoSettings, CartItem, Review, User, CategoryId, Address } from './types';
 import { PRODUCTS, MOCK_REVIEWS, MOCK_COUPONS, INITIAL_ADMIN_LOGS } from './data';
 import { detectUserCurrency, CurrencyConfig } from './utils/currency';
 
 export default function App() {
-  // 1. Age Verification Session state
+  // 1. Theme State for Day (Light) / Night (Dark) mode
+  const [theme, setTheme] = React.useState<'dark' | 'light'>(() => {
+    return (localStorage.getItem('ph_theme') as 'dark' | 'light') || 'light';
+  });
+
+  const handleThemeToggle = () => {
+    setTheme(prev => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('ph_theme', next);
+      return next;
+    });
+  };
+
+  // 1.2 Age Verification Session state
   const [isVerified, setIsVerified] = React.useState(false);
 
   // 2. Navigation Routing states
@@ -120,6 +133,16 @@ export default function App() {
     userProfileOpenRef.current = userProfile;
   }, [userProfile]);
 
+  // Synchronize CSS theme class list
+  React.useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'light') {
+      root.classList.add('light');
+    } else {
+      root.classList.remove('light');
+    }
+  }, [theme]);
+
   // Load state on mount
   React.useEffect(() => {
     const fetchOnLoad = async () => {
@@ -175,25 +198,25 @@ export default function App() {
 
   // 6. Global Administration Settings states
   const [webSettings, setWebSettings] = React.useState<WebSettings>({
-    siteName: 'PleasureHub Intimate Logistics',
-    siteLogo: '🔮',
+    siteName: 'FeshtaWish Fashion Boutique',
+    siteLogo: '✦',
     theme: 'dark',
-    appIcon: '🧸',
+    appIcon: '🛍️',
     enabled: true,
     maintenanceMode: false,
-    newsletterPromo: 'Join our body-positive mailing circular for 15% off!',
-    smtpServer: 'smtp.pleasurehub.internal',
-    smsGateway: 'sms.pleasurehub.internal',
+    newsletterPromo: 'Join our seasonal premium style circular for 15% off!',
+    smtpServer: 'smtp.feshtawish.internal',
+    smsGateway: 'sms.feshtawish.internal',
     twoFactorEnabled: true,
     language: 'EN',
-    discreetName: 'PH-Intimate-Svc'
+    discreetName: 'FW-Fashion-Svc'
   });
 
   const [seoSettings, setSeoSettings] = React.useState<SeoSettings>({
-    metaTitle: 'PleasureHub | Premium Discreet Wellness Store',
-    metaDescription: 'Explore designer sexual wellness devices, anatomical contour guides, and certified organic intimate formulations with Plain Cardboard shipping privacy.',
-    keywords: 'adult toys, luxury wellness, intimate cosmetics, sexual health, discrete delivery',
-    ogImage: 'https://pleasurehub.secure/images/meta-og.png'
+    metaTitle: 'FeshtaWish Boutique | Premium Men & Women Fashion Store',
+    metaDescription: 'Explore designer outerwear, tailored wool suits, artisan handcrafted footwear, and curated catalog collection items with premium worldwide delivery.',
+    keywords: 'men fashion, women fashion, designer suits, luxury boots, ethnic dress, heritage weavings',
+    ogImage: 'https://feshtawish.com/images/meta-og.png'
   });
 
   const handleUpdateWebSettings = async (nextSettings: WebSettings) => {
@@ -579,7 +602,7 @@ export default function App() {
 
 
   return (
-    <div id="application-scaffold" className="min-h-screen bg-[#06040A] text-zinc-100 selection:bg-fuchsia-600 selection:text-white flex flex-col justify-between">
+    <div id="application-scaffold" className={`min-h-screen ${theme === 'light' ? 'bg-[#ffffff] text-zinc-900' : 'bg-[#06040A] text-zinc-100'} selection:bg-amber-500 selection:text-black flex flex-col justify-between`}>
       
       {/* Age verification screen blocks entrance initially */}
       {!isVerified && <AgeVerification onVerify={handleVerifyAge} />}
@@ -601,14 +624,16 @@ export default function App() {
         discreetBillingName={webSettings.discreetName}
         activeCurrency={activeCurrency}
         setActiveCurrency={setActiveCurrency}
+        theme={theme}
+        onThemeToggle={handleThemeToggle}
       />
 
       {/* VIEWPORT SWITCH CONTAINER */}
       <main className="flex-grow pt-16 animate-fade-in">
         
         {(!webSettings.enabled || webSettings.maintenanceMode) && activeView !== 'admin' ? (
-          <div className="min-h-[70vh] bg-[#06040A] text-zinc-100 flex flex-col items-center justify-center p-8 text-center space-y-6">
-            <div className="w-16 h-16 bg-[#18112C] border border-violet-550/30 rounded-3xl flex items-center justify-center text-fuchsia-400 text-3xl animate-pulse">
+          <div className={`min-h-[70vh] ${theme === 'light' ? 'bg-[#ffffff] text-zinc-900' : 'bg-[#06040A] text-zinc-100'} flex flex-col items-center justify-center p-8 text-center space-y-6`}>
+            <div className="w-16 h-16 bg-zinc-900 border border-zinc-800 rounded-3xl flex items-center justify-center text-amber-500 text-3xl animate-pulse">
               ⚙️
             </div>
             <h2 className="text-2xl md:text-3.5xl font-serif font-black uppercase text-white tracking-tight">
@@ -625,7 +650,7 @@ export default function App() {
                 onClick={() => {
                   setActiveView('admin');
                 }}
-                className="px-6 py-2.5 bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-500 hover:from-violet-500 hover:to-fuchsia-400 rounded-full font-mono text-[10.5px] uppercase font-bold text-white tracking-widest cursor-pointer duration-200"
+                className="px-6 py-2.5 bg-[#111] hover:bg-zinc-900 border border-zinc-800 rounded-full font-mono text-[10.5px] uppercase font-bold text-amber-500 tracking-widest cursor-pointer duration-200"
               >
                 🔓 Staff Login Unlock Gate
               </button>

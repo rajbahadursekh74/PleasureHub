@@ -1,9 +1,9 @@
 import React from 'react';
 import { X, ShoppingBag, Plus, Minus, Trash2, Tag, ShieldCheck, HelpCircle } from 'lucide-react';
-import { CartItem, Coupon } from '../types';
-import { MOCK_COUPONS } from '../data';
-import { ProductIllustration } from './ProductIllustration';
-import { CurrencyConfig, formatPriceWithCurrency } from '../utils/currency';
+import { CartItem, Coupon } from '../../types';
+import { MOCK_COUPONS } from '../../data';
+import { ProductIllustration } from '../common/ProductIllustration';
+import { CurrencyConfig, formatPriceWithCurrency } from '../../utils/currency';
 
 interface CartViewProps {
   isOpen: boolean;

@@ -8,9 +8,186 @@
 }
 
 body {
-  background-color: #050505;
-  color: #f4f4f5;
+  background-color: #ffffff;
+  color: #111116;
   font-family: var(--font-sans);
+}
+
+/* =========================================
+   DAY MOOD (LIGHT MODE) GLOBAL POLISH OVERRIDES
+   ========================================= */
+
+/* Use standard class on documentElement / body to map all dark background panels & text */
+.light, .light body {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #111116 !important;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+}
+
+/* Header & Tickers */
+.light header#app-wide-header {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.light #top-discreet-alert {
+  background-color: #f4f4f7 !important;
+  border-color: rgba(0, 0, 0, 0.05) !important;
+  color: #4b5563 !important;
+}
+
+.light #input-header-search,
+.light #input-mobile-search {
+  background-color: #f1f1f4 !important;
+  color: #111116 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Dark Containers & Cards to White panels */
+.light #application-scaffold {
+  background-color: #ffffff !important;
+  color: #111116 !important;
+}
+
+.light #hero-box,
+.light #collections-bento > div,
+.light .bg-[#0c0c0f],
+.light .bg-[#0c0c0e],
+.light .bg-[#0c0c0e]\/40,
+.light .bg-[#0e0a1e],
+.light .bg-[#0f0f12],
+.light .bg-[#111],
+.light .bg-[#111]\/35,
+.light .bg-[#111]\/40,
+.light .bg-[#120F24]\/30,
+.light .bg-[#120F24]\/40,
+.light .bg-[#140F24]\/40,
+.light .bg-[#140F27]\/30,
+.light .bg-[#150F28]\/40,
+.light .bg-[#150F28],
+.light .bg-[#1a1a1e],
+.light .bg-zinc-950,
+.light .bg-zinc-950\/40,
+.light .bg-zinc-950\/55,
+.light .bg-zinc-900\/20,
+.light .bg-zinc-900\/25,
+.light .bg-zinc-900\/35,
+.light .bg-zinc-900\/40,
+.light .bg-zinc-900,
+.light .bg-[#0B0813],
+.light .bg-[#090611],
+.light .bg-[#080512],
+.light .bg-[#080511],
+.light .bg-[#0F0A1E],
+.light .bg-[#0B0716],
+.light .bg-[#160E2A]\/20,
+.light .bg-[#160E2A],
+.light .bg-[#111]\/30,
+.light .bg-[#130E26],
+.light .bg-[#0E091D],
+.light .bg-[#140F27],
+.light .bg-[#090614],
+.light .bg-[#090615],
+.light .bg-[#160E36],
+.light .bg-[#06040A],
+.light .bg-black\/90,
+.light #age-verification-overlay,
+.light #age-card,
+.light #mobile-routing-drawer,
+.light #cart-drawer-sheet,
+.light #chat-scaffold-card,
+.light #footer-trust-strip,
+.light #final-footer-sub-strip,
+.light footer#app-footer {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #111116 !important;
+}
+
+/* Specific button in dark to pleasant off-whites */
+.light .p-4.rounded-xl.hover\:bg-white\/5:hover,
+.light .hover\:bg-white\/5:hover,
+.light .hover\:bg-white\/10:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Text overrides from bright white to slate-black, neutral-black */
+.light .text-zinc-100,
+.light .text-zinc-200,
+.light .text-zinc-300,
+.light .text-zinc-450,
+.light .text-gray-400,
+.light .text-gray-450,
+.light .text-white {
+  color: #1f2937 !important;
+}
+
+.light .text-zinc-400 {
+  color: #4b5563 !important;
+}
+
+.light .text-zinc-500,
+.light .text-zinc-600,
+.light .text-zinc-700 {
+  color: #6b7280 !important;
+}
+
+/* Titles and Headings with specific color weights */
+.light h1, .light h2, .light h3, .light h4, .light h5, .light h6,
+.light .text-white {
+  color: #0f172a !important;
+}
+
+/* Borders mapping from light-on-dark to dark-on-light */
+.light .border-white\/5,
+.light .border-white\/10,
+.light .border-white\/20,
+.light .border-zinc-800,
+.light .border-zinc-900,
+.light .border-zinc-950,
+.light .border-zinc-900\/40,
+.light .border-zinc-800\/65,
+.light .border-zinc-[805]\/60,
+.light .border-zinc-800\/60,
+.light .border-violet-950\/20,
+.light .border-violet-955\/35,
+.light .border-violet-950\/40,
+.light .border-violet-950\/50,
+.light .border-violet-950\/60,
+.light .border-violet-955,
+.light .border-violet-950 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Specific elements background adjustments */
+.light .bg-amber-955\/40 {
+  background-color: rgba(245, 158, 11, 0.1) !important;
+}
+
+.light .bg-[#050505] {
+  background-color: #ffffff !important;
+}
+
+.light #home-view-page {
+  background-color: #ffffff !important;
+}
+
+/* Add custom slow spin animation for Sun icon */
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite;
 }
 
 /* Custom premium scrollbar */
@@ -26,5 +203,5 @@ body {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #9333ea;
+  background: #d97706;
 }

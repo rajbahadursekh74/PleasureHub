@@ -56,7 +56,7 @@ export const LiveChat: React.FC = () => {
         <button
           id="btn-trigger-chat"
           onClick={() => setIsOpen(true)}
-          className="flex items-center gap-2 px-4.5 py-3.5 bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-500 hover:opacity-95 text-white rounded-full shadow-2xl cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-300 group font-mono text-[11px] uppercase font-bold tracking-wider"
+          className="flex items-center gap-2 px-4.5 py-3.5 bg-gradient-to-r from-amber-500 to-yellow-600 hover:opacity-95 text-black rounded-full shadow-2xl cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-300 group font-mono text-[11px] uppercase font-bold tracking-wider"
         >
           <Headphones className="w-4.5 h-4.5 animate-pulse" />
           <span>Concierge Help</span>
@@ -65,10 +65,10 @@ export const LiveChat: React.FC = () => {
 
       {/* CHAT DISPLAY SCREEN CARD */}
       {isOpen && (
-        <div id="chat-scaffold-card" className="w-80 md:w-96 bg-[#0E0A1E] border border-violet-950 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.85)] flex flex-col justify-between h-112 animate-slide-in-right overflow-hidden flex-shrink-0 text-zinc-100">
+        <div id="chat-scaffold-card" className="w-80 md:w-96 bg-[#0c0c0e] border border-zinc-800 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.85)] flex flex-col justify-between h-112 animate-slide-in-right overflow-hidden flex-shrink-0 text-zinc-100">
           
           {/* HEADER SCREEN */}
-          <div className="bg-gradient-to-r from-violet-950 to-indigo-950 p-4 border-b border-violet-950/30 flex items-center justify-between">
+          <div className="bg-gradient-to-r from-zinc-900 to-zinc-950 p-4 border-b border-zinc-800/55 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
               <div>
@@ -93,8 +93,8 @@ export const LiveChat: React.FC = () => {
               >
                 <div className={`p-3 rounded-2xl font-sans leading-relaxed ${
                   m.sender === 'user'
-                    ? 'bg-violet-900 border border-violet-800 text-zinc-100 rounded-tr-none'
-                    : 'bg-[#150F28] border border-violet-955 text-zinc-200 rounded-tl-none'
+                    ? 'bg-amber-950/20 border border-amber-900 text-amber-100 rounded-tr-none'
+                    : 'bg-zinc-900 border border-zinc-800 text-zinc-200 rounded-tl-none'
                 }`}>
                   {m.text}
                 </div>
@@ -103,14 +103,14 @@ export const LiveChat: React.FC = () => {
             ))}
 
             {isTyping && (
-              <div className="flex gap-1 items-center max-w-[85%] bg-[#150F28] border border-violet-955 p-3 rounded-2xl rounded-tl-none text-zinc-400">
+              <div className="flex gap-1 items-center max-w-[85%] bg-[#111] border border-zinc-800 p-3 rounded-2xl rounded-tl-none text-zinc-400">
                 <span className="text-[10px] font-mono tracking-widest animate-pulse">Typing secure reply...</span>
               </div>
             )}
           </div>
 
           {/* CHAT INPUT FORM AND PRESETS BOTTOM SCREEN */}
-          <div className="p-4 bg-[#080512] border-t border-violet-955/20 space-y-3 font-mono text-[10px]">
+          <div className="p-4 bg-[#0a0a0c] border-t border-zinc-800/60 space-y-3 font-mono text-[10px]">
             
             {/* Quick preset chips */}
             {messages.length < 3 && (
@@ -124,7 +124,7 @@ export const LiveChat: React.FC = () => {
                     key={idx}
                     type="button"
                     onClick={() => selectPreset(txt)}
-                    className="py-1 px-2.5 rounded bg-violet-955/20 hover:bg-violet-900 border border-violet-950/45 text-zinc-300 hover:text-white cursor-pointer truncate max-w-full text-left"
+                    className="py-1 px-2.5 rounded bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 hover:text-white cursor-pointer truncate max-w-full text-left"
                   >
                     {txt}
                   </button>
@@ -138,11 +138,11 @@ export const LiveChat: React.FC = () => {
                 placeholder="Type intimate logistics query..."
                 value={inputVal}
                 onChange={e => setInputVal(e.target.value)}
-                className="flex-1 bg-[#150F28] text-xs px-3.5 py-2.5 rounded-xl border border-violet-950 focus:outline-none focus:border-violet-500 placeholder-zinc-600"
+                className="flex-1 bg-[#111] text-xs px-3.5 py-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:border-amber-500 placeholder-zinc-600"
               />
               <button
                 type="submit"
-                className="p-2.5 bg-violet-900 hover:bg-violet-850 border border-violet-800 rounded-xl text-zinc-200 cursor-pointer flex items-center justify-center flex-shrink-0"
+                className="p-2.5 bg-amber-500 hover:bg-amber-600 border border-amber-600 rounded-xl text-black cursor-pointer flex items-center justify-center flex-shrink-0"
               >
                 <Send className="w-4 h-4" />
               </button>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { ShieldCheck, Lock, CreditCard, Landmark, CheckCircle2, ShoppingBag, ArrowLeft, Loader2, QrCode, Upload } from 'lucide-react';
-import { CartItem, Coupon, Address, Order } from '../types';
-import { ProductIllustration } from './ProductIllustration';
-import { CurrencyConfig, formatPriceWithCurrency } from '../utils/currency';
+import { CartItem, Coupon, Address, Order } from '../../types';
+import { ProductIllustration } from '../common/ProductIllustration';
+import { CurrencyConfig, formatPriceWithCurrency } from '../../utils/currency';
 
 interface CheckoutViewProps {
   cartItems: CartItem[];
@@ -144,7 +144,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
 
             {/* Address fields */}
             <div className="space-y-4">
-              <h3 className="text-sm font-serif font-bold text-violet-400 uppercase tracking-widest border-b border-violet-950/20 pb-2">
+              <h3 className="text-sm font-serif font-bold text-amber-500 uppercase tracking-widest border-b border-zinc-900 pb-2">
                 1. Discreet Shipping Address
               </h3>
 
@@ -157,7 +157,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                     placeholder="e.g. Robin Jenkins"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-[#130E26] border border-violet-955 rounded-xl py-3 px-4 text-xs focus:outline-none focus:border-violet-500 text-zinc-200"
+                    className="w-full bg-[#111] border border-zinc-800 rounded-xl py-3 px-4 text-xs focus:outline-none focus:border-amber-500 text-zinc-200"
                   />
                   <span className="text-[9px] text-zinc-500 block pl-1">You may use an alias or nickname to protect your identity.</span>
                 </div>
@@ -170,7 +170,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                     placeholder="robin@discreet.com"
                     value={emailBox}
                     onChange={(e) => setEmailBox(e.target.value)}
-                    className="w-full bg-[#130E26] border border-violet-955 rounded-xl py-3 px-4 text-xs focus:outline-none focus:border-violet-500"
+                    className="w-full bg-[#111] border border-zinc-800 rounded-xl py-3 px-4 text-xs focus:outline-none focus:border-amber-500"
                   />
                 </div>
 
@@ -182,7 +182,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                     placeholder="(415) 555-0199"
                     value={phoneBox}
                     onChange={(e) => setPhoneBox(e.target.value)}
-                    className="w-full bg-[#130E26] border border-violet-955 rounded-xl py-3 px-4 text-xs focus:outline-none focus:border-violet-500"
+                    className="w-full bg-[#111] border border-zinc-800 rounded-xl py-3 px-4 text-xs focus:outline-none focus:border-amber-500"
                   />
                 </div>
 
@@ -194,7 +194,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                     placeholder="1248 Amethyst Parkway, Suite 10b"
                     value={street}
                     onChange={(e) => setStreet(e.target.value)}
-                    className="w-full bg-[#130E26] border border-violet-955 rounded-xl py-3 px-4 text-xs focus:outline-none focus:border-violet-500"
+                    className="w-full bg-[#111] border border-zinc-800 rounded-xl py-3 px-4 text-xs focus:outline-none focus:border-amber-500"
                   />
                 </div>
 
@@ -206,7 +206,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                     placeholder="San Francisco"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    className="w-full bg-[#130E26] border border-violet-955 rounded-xl py-3 px-4 text-xs focus:outline-none focus:border-violet-500"
+                    className="w-full bg-[#111] border border-zinc-800 rounded-xl py-3 px-4 text-xs focus:outline-none focus:border-amber-500"
                   />
                 </div>
 
@@ -220,7 +220,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                       maxLength={2}
                       value={stateAbbr}
                       onChange={(e) => setStateAbbr(e.target.value)}
-                      className="w-full bg-[#130E26] border border-violet-955 rounded-xl py-3 px-4 text-xs text-center focus:outline-none focus:border-violet-500 uppercase font-mono"
+                      className="w-full bg-[#111] border border-zinc-800 rounded-xl py-3 px-4 text-xs text-center focus:outline-none focus:border-amber-500 uppercase font-mono"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -231,7 +231,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                       placeholder="94103"
                       value={zip}
                       onChange={(e) => setZip(e.target.value)}
-                      className="w-full bg-[#130E26] border border-violet-955 rounded-xl py-3 px-4 text-xs text-center focus:outline-none focus:border-violet-500 font-mono"
+                      className="w-full bg-[#111] border border-zinc-800 rounded-xl py-3 px-4 text-xs text-center focus:outline-none focus:border-amber-500 font-mono"
                     />
                   </div>
                 </div>
@@ -240,7 +240,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
 
             {/* Delivery choices */}
             <div className="space-y-4">
-              <h3 className="text-sm font-serif font-bold text-violet-400 uppercase tracking-widest border-b border-violet-950/20 pb-2">
+              <h3 className="text-sm font-serif font-bold text-amber-500 uppercase tracking-widest border-b border-zinc-900 pb-2">
                 2. Shipping Speed Options
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
@@ -248,35 +248,35 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                   type="button"
                   onClick={() => setShippingSpeed('ground')}
                   className={`p-4 rounded-xl border text-left flex flex-col justify-between h-24 transition-all cursor-pointer ${
-                    shippingSpeed === 'ground' ? 'border-fuchsia-500 bg-fuchsia-955/15' : 'border-violet-950/80 bg-[#120D23]/30'
+                    shippingSpeed === 'ground' ? 'border-amber-500 bg-amber-950/10' : 'border-zinc-800 bg-zinc-900/30'
                   }`}
                 >
                   <div>
                     <span className="font-bold text-zinc-100 block uppercase">Confidential Ground</span>
                     <span className="text-[11px] text-zinc-500 block">Plain cardboard cardboard boxes via standard couriers</span>
                   </div>
-                  <span className="text-fuchsia-400 font-bold self-end">{shipping === 0 ? 'FREE' : formatPriceWithCurrency(4.99, activeCurrency)}</span>
+                  <span className="text-amber-500 font-bold self-end">{shipping === 0 ? 'FREE' : formatPriceWithCurrency(4.99, activeCurrency)}</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setShippingSpeed('air')}
                   className={`p-4 rounded-xl border text-left flex flex-col justify-between h-24 transition-all cursor-pointer ${
-                    shippingSpeed === 'air' ? 'border-fuchsia-500 bg-fuchsia-955/15' : 'border-violet-950/80 bg-[#120D23]/30'
+                    shippingSpeed === 'air' ? 'border-amber-500 bg-amber-950/10' : 'border-zinc-800 bg-zinc-900/30'
                   }`}
                 >
                   <div>
                     <span className="font-bold text-zinc-100 block uppercase">Overnight Express</span>
                     <span className="text-[11px] text-zinc-500 block">Express dispatch in bubble envelopes. Total priority security</span>
                   </div>
-                  <span className="text-fuchsia-400 font-bold self-end">{formatPriceWithCurrency(14.99, activeCurrency)}</span>
+                  <span className="text-amber-500 font-bold self-end">{formatPriceWithCurrency(14.99, activeCurrency)}</span>
                 </button>
               </div>
             </div>
 
             {/* Payment Method panel selectors */}
             <div className="space-y-4">
-              <h3 className="text-sm font-serif font-bold text-violet-400 uppercase tracking-widest border-b border-violet-950/20 pb-2">
+              <h3 className="text-sm font-serif font-bold text-amber-500 uppercase tracking-widest border-b border-zinc-900 pb-2">
                 3. Secure Payment Options
               </h3>
 
@@ -285,16 +285,16 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                   type="button"
                   onClick={() => setPaymentMethod('card')}
                   className={`flex-1 py-3 px-4 border rounded-xl flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-wider transition-all cursor-pointer ${
-                    paymentMethod === 'card' ? 'border-fuchsia-500 bg-[#25102F]' : 'border-violet-950/80'
+                    paymentMethod === 'card' ? 'border-amber-500 bg-amber-950/10' : 'border-zinc-800'
                   }`}
                 >
-                  <CreditCard className="w-4 h-4 text-fuchsia-400" /> Card Gateway
+                  <CreditCard className="w-4 h-4 text-amber-500" /> Card Gateway
                 </button>
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('crypto')}
                   className={`flex-1 py-3 px-4 border rounded-xl flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-wider transition-all cursor-pointer ${
-                    paymentMethod === 'crypto' ? 'border-fuchsia-500 bg-[#25102F]' : 'border-violet-950/80'
+                    paymentMethod === 'crypto' ? 'border-amber-500 bg-amber-950/10' : 'border-zinc-800'
                   }`}
                 >
                   <Landmark className="w-4 h-4 text-orange-400" /> Cryptocurrency
@@ -303,7 +303,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                   type="button"
                   onClick={() => setPaymentMethod('upi')}
                   className={`flex-1 py-3 px-4 border rounded-xl flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-wider transition-all cursor-pointer ${
-                    paymentMethod === 'upi' ? 'border-fuchsia-500 bg-[#25102F]' : 'border-violet-950/80'
+                    paymentMethod === 'upi' ? 'border-amber-500 bg-amber-950/10' : 'border-zinc-800'
                   }`}
                 >
                   <QrCode className="w-4 h-4 text-emerald-400" /> UPI Swap / QR
@@ -311,7 +311,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
               </div>
 
               {paymentMethod === 'card' && (
-                <div id="card-form-grid" className="p-5 bg-[#140F27]/30 border border-violet-955 rounded-2xl grid grid-cols-3 gap-4 text-xs font-mono">
+                <div id="card-form-grid" className="p-5 bg-[#111]/30 border border-zinc-800 rounded-2xl grid grid-cols-3 gap-4 text-xs font-mono">
                   <div className="col-span-3 space-y-1.5">
                     <label className="text-[10px] text-zinc-400 font-bold">Secure Card Number:</label>
                     <input
@@ -320,7 +320,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                       required={paymentMethod === 'card'}
                       value={cardNumber}
                       onChange={(e) => setCardNumber(e.target.value)}
-                      className="w-full bg-[#0E091D] border border-violet-950 py-2.5 px-3 rounded-lg focus:border-violet-500 focus:outline-none"
+                      className="w-full bg-[#111] border border-zinc-800 py-2.5 px-3 rounded-lg focus:border-amber-500 focus:outline-none"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -331,7 +331,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                       required={paymentMethod === 'card'}
                       value={cardExpiry}
                       onChange={(e) => setCardExpiry(e.target.value)}
-                      className="w-full bg-[#0E091D] border border-violet-950 py-2.5 px-3 rounded-lg text-center focus:border-violet-500 focus:outline-none"
+                      className="w-full bg-[#111] border border-zinc-800 py-2.5 px-3 rounded-lg text-center focus:border-amber-500 focus:outline-none"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -343,7 +343,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                       required={paymentMethod === 'card'}
                       value={cardCvv}
                       onChange={(e) => setCardCvv(e.target.value)}
-                      className="w-full bg-[#0E091D] border border-violet-950 py-2.5 px-3 rounded-lg text-center focus:border-violet-500 focus:outline-none"
+                      className="w-full bg-[#111] border border-zinc-800 py-2.5 px-3 rounded-lg text-center focus:border-amber-500 focus:outline-none"
                     />
                   </div>
                   <div className="flex items-center gap-2 col-span-3 pt-2 text-[10px] text-zinc-400 leading-normal">
@@ -355,7 +355,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
               )}
 
               {paymentMethod === 'crypto' && (
-                <div id="crypto-form-badge" className="p-5 bg-gradient-to-r from-orange-950/10 to-[#1A102A] border border-violet-955 rounded-2xl flex flex-col md:flex-row gap-6 items-center">
+                <div id="crypto-form-badge" className="p-5 bg-gradient-to-r from-orange-950/10 to-[#111] border border-zinc-900 rounded-2xl flex flex-col md:flex-row gap-6 items-center">
                   {/* Luxury transfer QR SVG code */}
                   <div className="w-24 h-24 bg-white p-1 rounded-lg flex items-center justify-center flex-shrink-0">
                     <svg viewBox="0 0 100 100" className="w-[100%] h-[100%]">
@@ -388,7 +388,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
               )}
 
               {paymentMethod === 'upi' && (
-                <div id="upi-form-badge" className="p-5 bg-gradient-to-r from-emerald-950/10 to-[#121E20] border border-violet-955 rounded-2xl flex flex-col md:flex-row gap-6 items-center">
+                <div id="upi-form-badge" className="p-5 bg-gradient-to-r from-emerald-950/10 to-[#111] border border-zinc-900 rounded-2xl flex flex-col md:flex-row gap-6 items-center">
                   <div className="w-24 h-24 bg-white p-1 rounded-lg flex items-center justify-center flex-shrink-0 relative">
                     {propUpiQrCodeUrl ? (
                       <img src={propUpiQrCodeUrl} className="w-[100%] h-[100%] object-contain" alt="Merchant UPI QR" referrerPolicy="no-referrer" />
@@ -430,7 +430,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                           placeholder="e.g. buyer@ybl"
                           value={upiId}
                           onChange={(e) => setUpiId(e.target.value)}
-                          className="w-full bg-[#0E091D] border border-violet-950 py-1.5 px-3 rounded text-zinc-300 focus:outline-none focus:border-violet-500"
+                          className="w-full bg-[#111] border border-zinc-850 py-1.5 px-3 rounded text-zinc-300 focus:outline-none focus:border-amber-500"
                         />
                       </div>
                       <div className="space-y-1">
@@ -441,7 +441,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                           placeholder="e.g. TXN18227391"
                           value={upiRef}
                           onChange={(e) => setUpiRef(e.target.value)}
-                          className="w-full bg-[#0E091D] border border-[#ff00a0]/30 py-1.5 px-3 rounded text-zinc-300 focus:outline-none focus:border-violet-500"
+                          className="w-full bg-[#111] border border-zinc-850 py-1.5 px-3 rounded text-zinc-300 focus:outline-none focus:border-amber-500"
                         />
                       </div>
                     </div>
@@ -476,24 +476,24 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
             <button
               id="checkout-finalize-btn"
               type="submit"
-              className="w-full py-4.5 rounded-full bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-500 hover:from-violet-500 hover:to-fuchsia-400 font-mono text-xs uppercase font-black tracking-widest text-center shadow-lg cursor-pointer flex items-center justify-center gap-2 duration-300"
+              className="w-full py-4.5 rounded-full bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 font-mono text-xs uppercase font-black tracking-widest text-center shadow-lg cursor-pointer flex items-center justify-center gap-2 duration-300 text-black"
             >
               <Lock className="w-4 h-4" /> Finalize My Discreet Order
             </button>
           </form>
 
           {/* Right Summary Side */}
-          <div id="checkout-summary-column" className="lg:col-span-5 space-y-6 lg:border-l lg:border-violet-955/20 lg:pl-10">
+          <div id="checkout-summary-column" className="lg:col-span-5 space-y-6 lg:border-l lg:border-zinc-900 lg:pl-10">
             <h3 className="text-lg font-serif font-black text-white flex items-center gap-2">
-              <ShoppingBag className="w-5 h-5 text-fuchsia-400" />
+              <ShoppingBag className="w-5 h-5 text-amber-500" />
               Order Review
             </h3>
 
             {/* Items inside summary */}
             <div className="space-y-4 max-h-72 overflow-y-auto">
               {cartItems.map((item, idx) => (
-                <div key={idx} className="flex gap-4 items-center bg-[#150F28]/25 p-2 rounded-xl border border-violet-955/20">
-                  <div className="w-12 h-12 bg-[#090614] rounded-lg border flex items-center justify-center p-1 flex-shrink-0">
+                <div key={idx} className="flex gap-4 items-center bg-zinc-900/10 p-2 rounded-xl border border-zinc-900">
+                  <div className="w-12 h-12 bg-zinc-950 rounded-lg border border-zinc-900 flex items-center justify-center p-1 flex-shrink-0">
                     <ProductIllustration productId={item.product.id} />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -508,7 +508,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
             </div>
 
             {/* Price breakdown */}
-            <div className="space-y-2 font-mono text-xs border-t border-violet-955/35 pt-4">
+            <div className="space-y-2 font-mono text-xs border-t border-zinc-900 pt-4">
               <div className="flex justify-between text-zinc-500">
                 <span>Subtotal:</span>
                 <span>{formatPriceWithCurrency(subtotal, activeCurrency)}</span>
@@ -526,15 +526,15 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
                 <span>{shipping === 0 ? 'FREE' : formatPriceWithCurrency(shipping, activeCurrency)}</span>
               </div>
 
-              <div className="flex justify-between text-zinc-300 border-t border-violet-955/15 pt-2 text-sm font-serif">
+              <div className="flex justify-between text-zinc-300 border-t border-zinc-900 pt-2 text-sm font-serif">
                 <span>Confidential Total:</span>
-                <span className="text-fuchsia-400 font-bold font-mono text-base">{formatPriceWithCurrency(total, activeCurrency)}</span>
+                <span className="text-amber-500 font-bold font-mono text-base">{formatPriceWithCurrency(total, activeCurrency)}</span>
               </div>
             </div>
 
             {/* Bottom trust seals */}
-            <div className="p-4 bg-violet-950/20 border border-violet-900/40 rounded-xl space-y-2 text-xs leading-relaxed">
-              <span className="font-mono text-[10px] font-bold text-violet-400 block uppercase">Logistics Safeguard</span>
+            <div className="p-4 bg-amber-950/10 border border-amber-900/15 rounded-xl space-y-2 text-xs leading-relaxed">
+              <span className="font-mono text-[10px] font-bold text-amber-500 block uppercase">Logistics Safeguard</span>
               <p className="text-zinc-400">
                 Billing entries are protected behind an independent tokenized payment processor. The packaging contains absolutely zero references to product contents, materials, or brands.
               </p>
@@ -542,11 +542,10 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
           </div>
         </div>
       )}
-
       {/* Step 2: Loader screen */}
       {step === 'loading' && (
         <div id="checkout-ssl-processor" className="w-full text-center py-24 space-y-4 max-w-md mx-auto flex flex-col items-center">
-          <Loader2 className="w-10 h-10 text-fuchsia-500 animate-spin" />
+          <Loader2 className="w-10 h-10 text-amber-500 animate-spin" />
           <h3 className="text-lg font-serif font-bold text-white tracking-widest uppercase">SSL Bank clearance</h3>
           <p className="text-xs text-zinc-400 max-w-md leading-relaxed font-sans">
             Authorizing transaction variables... Confirming 256-bit secure envelope keys, verifying biological item coordinates, and printing discreet logistics codes. Do not refresh.
@@ -556,7 +555,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
 
       {/* Step 3: Receipt screen */}
       {step === 'receipt' && placedOrder && (
-        <div id="checkout-receipt-confirmation" className="w-full max-w-lg mx-auto bg-[#130E26]/60 border border-violet-950 p-8 md:p-12 rounded-3xl text-center space-y-6 shadow-2xl animate-fade-in flex flex-col items-center">
+        <div id="checkout-receipt-confirmation" className="w-full max-w-lg mx-auto bg-zinc-900/50 border border-zinc-900 p-8 md:p-12 rounded-3xl text-center space-y-6 shadow-2xl animate-fade-in flex flex-col items-center">
           <CheckCircle2 className="w-12 h-12 text-emerald-500 animate-bounce" />
           <div className="space-y-1.5">
             <h2 className="text-2xl font-serif font-black text-white">Purchase Confirmed!</h2>
@@ -568,8 +567,8 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
           </p>
 
           {/* Receipt billing detail sheet */}
-          <div className="w-full bg-[#080511] rounded-xl p-5 text-left text-xs font-mono space-y-3 border border-violet-955/20 text-zinc-400">
-            <span className="text-[10px] uppercase font-bold text-violet-400 block border-b border-zinc-900 pb-1">Delivery Protocol Log</span>
+          <div className="w-full bg-[#080511] rounded-xl p-5 text-left text-xs font-mono space-y-3 border border-zinc-900 text-zinc-400">
+            <span className="text-[10px] uppercase font-bold text-amber-500 block border-b border-zinc-900 pb-1">Delivery Protocol Log</span>
             
             <div className="flex justify-between">
               <span>Plain Courier Target:</span>
@@ -583,7 +582,7 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
 
             <div className="flex justify-between">
               <span>Card Descriptors:</span>
-              <span className="text-fuchsia-400 italic font-serif">&ldquo;{discreetBillingName}&ldquo;</span>
+              <span className="text-amber-500 italic font-serif">&ldquo;{discreetBillingName}&ldquo;</span>
             </div>
 
             <div className="flex justify-between border-t border-zinc-900 pt-2 text-[#FBBF24]">
@@ -596,14 +595,14 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({
           <div id="receipt-desktop-ctas" className="w-full flex gap-3">
             <button
               onClick={() => setActiveView('dashboard')}
-              className="flex-1 cursor-pointer py-3 px-4 rounded-full bg-violet-950 hover:bg-violet-900 border border-violet-800/40 text-violet-300 font-mono text-xs uppercase font-bold tracking-widest duration-300"
+              className="flex-1 cursor-pointer py-3 px-4 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-amber-500 font-mono text-xs uppercase font-bold tracking-widest duration-300"
             >
               Track Order
             </button>
             
             <button
               onClick={() => setActiveView('home')}
-              className="flex-1 cursor-pointer py-3 px-4 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-500 hover:opacity-90 text-white font-mono text-xs uppercase font-bold tracking-widest duration-300"
+              className="flex-1 cursor-pointer py-3 px-4 rounded-full bg-gradient-to-r from-amber-500 to-yellow-600 hover:opacity-90 text-black font-mono text-xs uppercase font-bold tracking-widest duration-300"
             >
               Home View
             </button>
